@@ -177,8 +177,11 @@
     ```
 
 2. 在 Typora 的左上角菜单中点击 ‘主题’，在 ‘主题’ 页面中点击打开 ‘主题文件夹’ 按钮。
-3. 将文件 `spring.css` 复制到打开的 Typora 主题文件夹中。
-4. 重启 Typora，然后主题列表中就可以选择使用 **Spring** 主题啦。
+3. 将需要使用的主题文件复制到打开的 Typora 主题文件夹中：
+    - `spring.css`：自动跟随系统浅色/暗色模式。
+    - `spring-light.css`：始终使用浅色 Spring 主题。
+    - `spring-dark.css`：始终使用暗色 SpringNight 主题。
+4. 重启 Typora，然后主题列表中就可以选择使用 **Spring**、**Spring Light** 或 **Spring Dark** 主题。
 
 ## Todo List
 
@@ -187,7 +190,7 @@
 - [x] 交互效果配置
 - [ ] HTML导出配置
 - [ ] 文档排版配置
-- [ ] 暗色主题 SprIngNight
+- [x] 暗色主题 SprIngNight
 - [ ] 自定义配色卡
 - [ ] 自定义样式
 - [ ] 可供选择的多种交互效果

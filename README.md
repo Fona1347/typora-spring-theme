@@ -181,9 +181,12 @@ You can customize the interactive effects of any element to be turned on or off 
 
 2. Click ‘Themes’ in the menu of Typora, and click the ‘Open Theme Folder’ button to open it on the ‘Themes’ page.
 
-3. Copy the file `spring.css` into the opened Typora theme folder.
+3. Copy the theme file you want into the opened Typora theme folder:
+    - `spring.css`: automatically follows the system light/dark mode.
+    - `spring-light.css`: always uses the light Spring theme.
+    - `spring-dark.css`: always uses the dark SpringNight theme.
 
-4. Restart Typora, and then you can choose to use the **Spring** theme in the ‘Themes’ list.
+4. Restart Typora, and then you can choose **Spring**, **Spring Light**, or **Spring Dark** in the ‘Themes’ list.
 
 ## Todo List
 
@@ -192,7 +195,7 @@ You can customize the interactive effects of any element to be turned on or off 
 - [x] Interactive animation configuration
 - [ ] HTML export configuration
 - [ ] Document layout configuration
-- [ ] Dark theme SprIngNight
+- [x] Dark theme SprIngNight
 - [ ] Custom color palette
 - [ ] Custom style
 - [ ] A variety of interactive effects to choose from
