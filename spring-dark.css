@@ -232,6 +232,19 @@
 
      --a-color: #53A5FB;
      --a-hover-color: #91D462;
+     --footnote-ref-color: #b7eb91;
+     --footnote-ref-hover-color: #d0f7b3;
+     --footnote-ref-bg: rgba(145, 212, 98, 0.14);
+     --footnote-ref-hover-bg: rgba(145, 212, 98, 0.26);
+     --footnote-tooltip-bg-fallback: #303b35;
+     --footnote-tooltip-bg: rgba(48, 59, 53, 0.84);
+     --footnote-tooltip-color: #eef5ef;
+     --footnote-tooltip-strong-color: #91D462;
+     --footnote-tooltip-em-color: #d0f7b3;
+     --footnote-tooltip-link-color: #b7eb91;
+     --footnote-tooltip-link-hover-color: #d2f7b8;
+     --footnote-tooltip-border: rgba(220, 255, 225, 0.18);
+     --footnote-tooltip-shadow: rgba(0, 0, 0, 0.48);
 
      --code-fences-color: #ffffffd8;
      --code-fences-bg-color: #2c2c2b;
@@ -1094,6 +1107,64 @@ table tbody+tbody,
     font-size: 1rem;
 }
 
+/* acrylic footnote hover preview */
+#write sup.md-footnote {
+    color: var(--footnote-ref-color);
+    background-color: var(--footnote-ref-bg);
+}
+
+#write sup.md-footnote:hover {
+    color: var(--footnote-ref-hover-color);
+    background-color: var(--footnote-ref-hover-bg);
+}
+
+.code-tooltip.md-hover-tip,
+.md-hover-tip .code-tooltip-content {
+    color: var(--footnote-tooltip-color) !important;
+    background: var(--footnote-tooltip-bg-fallback) !important;
+    box-shadow:
+        0 10px 28px var(--footnote-tooltip-shadow),
+        inset 0 0 0 1px var(--footnote-tooltip-border) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+}
+
+.md-hover-tip .code-tooltip-content a {
+    color: var(--footnote-tooltip-link-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content a:hover {
+    color: var(--footnote-tooltip-link-hover-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content strong {
+    color: var(--footnote-tooltip-strong-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content em {
+    color: var(--footnote-tooltip-em-color) !important;
+}
+
+.md-arrow::after {
+    background: var(--footnote-tooltip-bg-fallback) !important;
+    border-bottom-color: var(--footnote-tooltip-bg-fallback) !important;
+    box-shadow: 0 1px 4px var(--footnote-tooltip-shadow) !important;
+}
+
+@supports (
+    (backdrop-filter: blur(1px)) or
+    (-webkit-backdrop-filter: blur(1px))
+) {
+    .code-tooltip.md-hover-tip,
+    .md-hover-tip .code-tooltip-content {
+        background: var(--footnote-tooltip-bg) !important;
+    }
+
+    .md-arrow::after {
+        background: var(--footnote-tooltip-bg) !important;
+        border-bottom-color: var(--footnote-tooltip-bg) !important;
+    }
+}
 /* math,html block common */
 .mathjax-block[contenteditable="false"]:active,
 .mathjax-block[contenteditable="false"]:focus,
