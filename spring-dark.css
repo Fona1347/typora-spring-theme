@@ -248,7 +248,16 @@
      --cursor-width: 4px;
 
      --scrollbar-track-bg: #232222;
-     --scrollbar-thumb-bg: linear-gradient(to top right, #3ea174, #91D462) !important;
+     --scrollbar-thumb-bg: linear-gradient(
+         to bottom,
+         rgba(142, 214, 121, 0.68),
+         rgba(46, 158, 88, 0.82)
+     ) !important;
+        --scrollbar-thumb-horizontal-bg: linear-gradient(
+         to right,
+         rgba(142, 214, 121, 0.68),
+         rgba(46, 158, 88, 0.82)
+     ) !important;
 
      --quick-open-bg-color: #2c2c2b;
      --quick-open-color: #ffffffd8;
@@ -330,15 +339,22 @@ content {
     background-color: var(--content-write-bg-color);
 }
 
-content #write {
+#write {
     background-color: var(--content-write-bg-color);
+    margin: 0 auto;
     width: 100%;
     max-width: 1424px;
     min-width: 300px;
-    margin: 0 auto;
-    padding-bottom: 7.5rem;
+    padding: 32px 112px;
+    overflow: auto;
 }
 
+#typora-source .CodeMirror-lines {
+    margin: 0 auto;
+    max-width: 1424px;
+    min-width: 300px;
+    padding: 32px 112px;
+}
 content #write p {
     word-spacing: 0.1rem;
     line-height: 1.9rem;
@@ -1681,7 +1697,15 @@ select:disabled,
 
 ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb-bg);
-    border-radius: 5px;
+    border-radius: 6px;
+}
+
+.md-table-fig::-webkit-scrollbar-thumb:horizontal,
+.md-table-fig .md-table::-webkit-scrollbar-thumb:horizontal,
+.md-table-fig table::-webkit-scrollbar-thumb:horizontal,
+table::-webkit-scrollbar-thumb:horizontal {
+    background: var(--scrollbar-thumb-horizontal-bg);
+    border-radius: 6px;
 }
 
 /* find dialog */
@@ -2011,43 +2035,38 @@ select:disabled,
     }
 }
 
-@media only screen and (min-width: 1400px) {
-    #write {
-        max-width: 1024px;
-    }
-
-    hr {
-        position: relative;
-        margin: 2rem auto;
-        border: none;
-        background-color: #2f845e;
-        height: 3px;
-        opacity: 0.8;
-        border-radius: 1.5px;
-    }
-
-    .md-fences:hover {
-        animation: none;
+@media screen and (max-width: 1724px) {
+    #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 96px;
     }
 }
 
-@media only screen and (min-width: 1800px) {
-    #write {
-        max-width: 1200px;
+@media screen and (max-width: 1440px) {
+    #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 80px;
     }
+}
 
-    hr {
-        position: relative;
-        margin: 2rem auto;
-        border: none;
-        background-color: #2f845e;
-        height: 3px;
-        opacity: 0.8;
-        border-radius: 1.5px;
+@media screen and (max-width: 1200px) {
+    #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 80px;
     }
+}
 
-    .md-fences:hover {
-        animation: none;
+@media screen and (max-width: 992px) {
+    #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 60px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px;
     }
 }
 

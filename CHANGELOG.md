@@ -1,3 +1,18 @@
+## Unreleased
+
+### Changed
+
+- 优化 Spring 浅色、深色与 font 衍生主题的滚动条样式。
+  - 将浅色模式滚动条轨道调整为更柔和的 Spring 绿色背景。
+  - 将浅色和深色模式滚动条滑块调整为更柔和的绿色渐变。
+  - 默认滚动条滑块改为竖向渐变，减少 Chromium/Electron 下窄滚动条出现左右分色的问题。
+  - 为 Typora 表格横向滚动条单独保留横向渐变。
+  - 保留原滚动条宽度，同时保留新的滑块圆角。
+
+- 将 Spring 编辑区宽度逻辑对齐 mdmdt 主题。
+  - 编辑区与源码模式内容宽度使用 `1424px`。
+  - 增加 mdmdt 风格的窄屏响应式 padding。
+
 ## v1.0.0
 
 The first release of the SprIng theme includes the following features that were originally designed for SprIng:
