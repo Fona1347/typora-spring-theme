@@ -89,7 +89,7 @@
      * - 
      **************************************************************************************************/
      --body-text-color: #282c34;
-     --content-write-bg-color: #fefefe;
+     --content-write-bg-color: #fffdf8;
      --selection-color: #def2e8;
 
      --write-h1-before-bg: linear-gradient(90deg, rgba(152, 251, 152, 0), #e8f4ee, rgba(152, 251, 152, 0));
@@ -350,22 +350,28 @@ content {
     background-color: var(--content-write-bg-color);
     margin: 0 auto;
     width: 100%;
-    max-width: 1424px;
+    max-width: 1280px;
     min-width: 300px;
     padding: 32px 112px;
+    box-sizing: border-box;
     overflow: auto;
 }
 
 #typora-source .CodeMirror-lines {
     margin: 0 auto;
-    max-width: 1424px;
+    max-width: 1280px;
     min-width: 300px;
     padding: 32px 112px;
+    box-sizing: border-box;
 }
 content #write p {
     word-spacing: 0.1rem;
-    line-height: 1.9rem;
+    line-height: 1.8rem;
     margin: 3px;
+}
+
+content #write > p + p {
+    margin-top: 0.8rem;
 }
 
 content #write ol li {
@@ -399,7 +405,7 @@ content #write>h5.md-focus:before {
 }
 
 #write h1 {
-    font-size: 2.4rem;
+    font-size: 2.25rem;
     position: relative;
     overflow: hidden;
     transition: transform 0.4s ease;
@@ -429,7 +435,7 @@ content #write>h5.md-focus:before {
 }
 
 #write h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     position: relative;
     padding-bottom: 0rem;
     font-weight: bold;
@@ -453,19 +459,19 @@ content #write>h5.md-focus:before {
 }
 
 #write h3 {
-    font-size: 1.8rem;
-}
-
-#write h4 {
     font-size: 1.5rem;
 }
 
+#write h4 {
+    font-size: 1.25rem;
+}
+
 #write h5 {
-    font-size: 1.3rem;
+    font-size: 1.05rem;
 }
 
 #write h6 {
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 #write h3,
@@ -1961,12 +1967,12 @@ table::-webkit-scrollbar-thumb:horizontal {
 }
 
 html {
-    font-size: 17px;
+    font-size: 20px;
 }
 
 /* Spring font variant: borrowed from hy-macos-modern-theme */
 :root {
-    --spring-font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    --spring-font-ui: "Roboto", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
     --spring-font-code: "Cascadia Code", Consolas, monospace;
 }
 
