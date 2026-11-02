@@ -88,9 +88,16 @@
      **************************************************************************************************
      * - 
      **************************************************************************************************/
-     --body-text-color: #ffffffd8;
+     --body-text-color: #c9c5bc;
      --content-write-bg-color: #232222;
      --selection-color: #4f4d4d;
+     --img-brightness: 0.9;
+
+     /* Native Typora colors used by focus mode and text selection. */
+     --text-color: var(--body-text-color);
+     --blur-text-color: #8c8982;
+     --select-text-bg-color: var(--selection-color);
+     --select-text-font-color: var(--body-text-color);
 
      --write-h1-before-bg: linear-gradient(90deg, rgba(145, 212, 98, 0), rgba(47, 132, 94, 0.45), rgba(145, 212, 98, 0));
 
@@ -104,15 +111,15 @@
 
      --ol-hover-marker-color: rgb(calc(145 * var(--list-marker-effect) * var(--use-dynamic-effect)), calc(212 * var(--list-marker-effect) * var(--use-dynamic-effect)), calc(98 * var(--list-marker-effect) * var(--use-dynamic-effect)));
 
-     --blockquote-border-color: #b1e7ff;
-     --blockquote-bg-color: rgba(177, 231, 255, 0.12);
-     --blockquote-nested-bg-color: rgba(177, 231, 255, 0.16);
-     --blockquote-nested-deeper-bg-color: rgba(177, 231, 255, 0.2);
-     --blockquote-nested-border-color: #8ed8f8;
-     --blockquote-nested-deeper-border-color: #6bc9f2;
-     --blockquote-hover-border-color: #b1e7ff;
-     --blockquote-thead-bg-color: rgba(177, 231, 255, 0.28);
-     --blockquote-thead-text-color: #b1e7ff;
+     --blockquote-border-color: #5ea67c;
+     --blockquote-bg-color: #27352d;
+     --blockquote-nested-bg-color: rgba(47, 132, 94, 0.08);
+     --blockquote-nested-deeper-bg-color: rgba(47, 132, 94, 0.12);
+     --blockquote-nested-border-color: #4f946d;
+     --blockquote-nested-deeper-border-color: #40825e;
+     --blockquote-hover-border-color: #5ea67c;
+     --blockquote-thead-bg-color: rgba(47, 132, 94, 0.28);
+     --blockquote-thead-text-color: var(--body-text-color);
      --blockquote-td-bg-color: #2c2c2b;
 
      --alert-tip-border-color: #91D462;
@@ -173,7 +180,7 @@
 
      --table-border-color: #5a5a5a;
      --table-td-hover-bg: rgba(64, 62, 62, calc(0.75 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-     --blockquote-td-hover-bg: rgba(177, 231, 255, calc(0.2 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
+     --blockquote-td-hover-bg: rgba(47, 132, 94, calc(0.2 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
      --alert-tip-td-hover-bg: rgba(47, 132, 94, calc(0.28 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
      --alert-caution-td-hover-bg: rgba(245, 145, 2, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
      --alert-warning-td-hover-bg: rgba(220, 38, 38, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
@@ -191,7 +198,7 @@
      --table-webkit-box-shadow-color2: rgba(0, 0, 0, 0.25);
 
      --table-reset-bg-color: #2c2c2b;
-     --table-reset-input-color: #ffffffd8;
+     --table-reset-input-color: var(--body-text-color);
      --table-some-border-top-color: #515151;
 
      --table-meta-block-bg-color: #2c2c2b;
@@ -208,13 +215,13 @@
      --math-html-rawblock-bg-color: #2c2c2b;
      --math-html-rawblock-control-bg-color: #403e3e;
      --math-html-rawblock-tooltip-bg-color: #403e3e;
-     --math-html-rawblock-input-color: #ffffffd8;
+     --math-html-rawblock-input-color: var(--body-text-color);
      --math-html-rawblock-gutter-bg-color: #2c2c2b;
      --math-html-rawblock-selected-bg-color: #4f4d4d;
      --math-html-rawblock-selected-bg-color2: rgba(47, 132, 94, 0.45);
 
      --strong-color: #91D462;
-     --em-color: #ffffffd8;
+     --em-color: var(--body-text-color);
      --em-hover-color: #91D462;
      --u-border-color: #3ea174;
 
@@ -238,7 +245,7 @@
      --footnote-ref-hover-bg: rgba(145, 212, 98, 0.26);
      --footnote-tooltip-bg-fallback: #303b35;
      --footnote-tooltip-bg: rgba(48, 59, 53, 0.84);
-     --footnote-tooltip-color: #eef5ef;
+     --footnote-tooltip-color: var(--body-text-color);
      --footnote-tooltip-strong-color: #91D462;
      --footnote-tooltip-em-color: #d0f7b3;
      --footnote-tooltip-link-color: #b7eb91;
@@ -246,7 +253,7 @@
      --footnote-tooltip-border: rgba(220, 255, 225, 0.18);
      --footnote-tooltip-shadow: rgba(0, 0, 0, 0.48);
 
-     --code-fences-color: #ffffffd8;
+     --code-fences-color: var(--body-text-color);
      --code-fences-bg-color: #2c2c2b;
      --code-fences-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
      --code-fences-before-bg: #2f845e;
@@ -273,7 +280,7 @@
      ) !important;
 
      --quick-open-bg-color: #2c2c2b;
-     --quick-open-color: #ffffffd8;
+     --quick-open-color: var(--body-text-color);
      --quick-open-item-active-bg-color: #403e3e;
      --quick-open-category-border-color: #3e3c3c;
 
@@ -282,8 +289,8 @@
      --modal-dialog-bg-color: #2c2c2b;
      --modal-dialog-btn-default-hover-bg-color: #403e3e;
      
-     --preferences-color: #ffffffd8;
-     --preference-sidebar-nav-group-item-active-color: #ffffffd8;
+     --preferences-color: var(--body-text-color);
+     --preference-sidebar-nav-group-item-active-color: var(--body-text-color);
      --preference-sidebar-nav-group-item-active-bg-color: #2f845e;
 
      --html-for-mac-sidebar-webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
@@ -291,12 +298,12 @@
 
      --notification-bg-color: #2c2c2b;
      --notification-hover-bg-color: #403e3e;
-     --menu-sidebar-color: #ffffffd8;
+     --menu-sidebar-color: var(--body-text-color);
      --menu-sidebar-list-border-color: #101010;
      --menu-sidebar-list-bg-color: #2c2c2b;
-     --menu-sidebar-li-a-color: #dedede;
+     --menu-sidebar-li-a-color: var(--body-text-color);
      --menu-sidebar-li-a-active-hover-color: #403e3e;
-     --megamenu-content-color: #ffffffd8;
+     --megamenu-content-color: var(--body-text-color);
 
      --sidebar-bg-color: #343333;
      --sidebar-content-file-list-item-border-color: #3e3c3c;
@@ -318,7 +325,7 @@
      --sidebar-files-menu-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
 
      --dropdown-menu-border-color: #3e3c3c;
-     --dropdown-menu-li-a-color: #ffffffd8;
+     --dropdown-menu-li-a-color: var(--body-text-color);
      --dropdown-menu-li-a-hover-color: #403e3e;
      --dropdown-menu-divider-border-color: #515151;
 
@@ -509,6 +516,18 @@ img {
 img:hover {
     transform: scale(calc(1 + 0.01 * var(--img-hover-effect) * var(--use-dynamic-effect)));
     border-radius: calc(10px - 10px * var(--img-hover-effect) * var(--use-dynamic-effect));
+}
+
+/* Dim document images on screen; hover restores the original display. */
+@media screen {
+    #write img {
+        filter: brightness(var(--img-brightness));
+        transition: transform 0.15s ease, border-radius 0.15s ease, filter 0.15s ease;
+    }
+
+    #write img:hover {
+        filter: none;
+    }
 }
 
 /* paragraph */
