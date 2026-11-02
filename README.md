@@ -1,3 +1,8 @@
+> **Personal fork:** use the `hy-spring` branch. Install the three standalone themes from
+> [`dist/`](dist/), and edit [`styles/`](styles/) for personal changes.
+> The root `spring.css` is the unchanged upstream base.
+> See [customization and upstream sync](CUSTOMIZATION.md).
+
 <img src=".assets/logo-spring.png" alt="logo-spring" />
 
 <p align="center">
@@ -138,9 +143,9 @@
 
 You can customize the interactive effects of any element to be turned on or off as needed. The specific operations are as follows:
 
-1. Open the `spring.css` file and find the interactive effect configuration options according to the comments at the beginning of the file;
+1. Read the available interactive variables in the upstream `spring.css`, then add your chosen overrides inside `:root` in `styles/common.css`;
 
-2. Modify the variable value of the corresponding interactive animation as required, `0` means off, `1` means on;
+2. Set the corresponding variable to `0` (off) or `1` (on), then run `python scripts/build.py` and reinstall the generated themes from `dist/`;
 
 3. Restart Typora to apply the changes.
 
@@ -173,18 +178,22 @@ You can customize the interactive effects of any element to be turned on or off 
 
 ## Installation
 
-1. Use the following command in your terminal to clone this repository locally **/** or you can get the stable version compressed package from [Releases](https://github.com/SprInec/typora-spring-theme/releases) and unzip it locally.
+1. Clone the personal branch, or download this branch as a ZIP from GitHub.
 
     ```bash
-    git clone https://github.com/SprInec/typora-spring-theme.git
+    git clone --branch hy-spring https://github.com/Fona1347/typora-spring-theme.git
     ```
 
 2. Click ‘Themes’ in the menu of Typora, and click the ‘Open Theme Folder’ button to open it on the ‘Themes’ page.
 
-3. Copy the theme file you want into the opened Typora theme folder:
-    - `spring.css`: automatically follows the system light/dark mode.
-    - `spring-light.css`: always uses the light Spring theme.
-    - `spring-dark.css`: always uses the dark SpringNight theme.
+3. Copy the theme file you want from `dist/` into the opened Typora theme folder:
+    - `dist/spring.css`: automatically follows the system light/dark mode.
+    - `dist/spring-light.css`: always uses the light Spring theme.
+    - `dist/spring-dark.css`: always uses the dark SpringNight theme.
+
+   The generated files are committed and ready to install. To rebuild them after
+   editing `styles/`, run `python scripts/build.py`. Archived font experiments are
+   kept under `legacy/font-variants/` and are not maintained.
 
 4. Restart Typora, and then you can choose **Spring**, **Spring Light**, or **Spring Dark** in the ‘Themes’ list.
 

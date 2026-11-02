@@ -1,3 +1,7 @@
+> **个人维护版：** 使用 `hy-spring` 分支，从 [`dist/`](dist/) 安装三款独立主题，
+> 在 [`styles/`](styles/) 调整个人风格。根目录 `spring.css` 保持上游原样。
+> 构建与同步方法见[个人版维护说明](CUSTOMIZATION.md)。
+
 <img src=".assets/logo-spring.png" alt="logo-spring" />
 
 <p align="center">
@@ -138,8 +142,8 @@
 
 可根据需求自定义开启或关闭任意元素的交互效果，具体操作如下：
 
-1. 打开 `spring.css` 文件，在文件开头根据注释找到交互效果配置选项；
-2. 根据需求修改对应交互效果的变量值，`0` 为关闭，`1` 为开启；
+1. 在上游 `spring.css` 开头查看可用交互变量，在 `styles/common.css` 的 `:root` 中添加需要覆写的变量；
+2. 将变量设为 `0`（关闭）或 `1`（开启），运行 `python scripts/build.py`，再从 `dist/` 安装生成的主题；
 3. 重启 Typora 即可应用更改。
 
 > [!important]
@@ -170,17 +174,21 @@
 
 ## 快速安装与应用
 
-1. 在终端使用以下命令将此仓库克隆到本地 **/** 或者您也可以从 [Releases](https://github.com/SprInec/typora-spring-theme/releases) 获取稳定版本的压缩包并解压到本地。
+1. 在终端克隆个人分支，或在 GitHub 下载该分支的 ZIP 压缩包。
 
     ```bash
-    git clone https://github.com/SprInec/typora-spring-theme.git
+    git clone --branch hy-spring https://github.com/Fona1347/typora-spring-theme.git
     ```
 
 2. 在 Typora 的左上角菜单中点击 ‘主题’，在 ‘主题’ 页面中点击打开 ‘主题文件夹’ 按钮。
-3. 将需要使用的主题文件复制到打开的 Typora 主题文件夹中：
-    - `spring.css`：自动跟随系统浅色/暗色模式。
-    - `spring-light.css`：始终使用浅色 Spring 主题。
-    - `spring-dark.css`：始终使用暗色 SpringNight 主题。
+3. 从 `dist/` 将需要使用的主题文件复制到打开的 Typora 主题文件夹中：
+    - `dist/spring.css`：自动跟随系统浅色/暗色模式。
+    - `dist/spring-light.css`：始终使用浅色 Spring 主题。
+    - `dist/spring-dark.css`：始终使用暗色 SpringNight 主题。
+
+   仓库已包含生成的成品，可以直接安装。修改 `styles/` 后运行
+   `python scripts/build.py` 重新生成。三个字体实验版保存在
+   `legacy/font-variants/`，不再维护或安装。
 4. 重启 Typora，然后主题列表中就可以选择使用 **Spring**、**Spring Light** 或 **Spring Dark** 主题。
 
 ## Todo List

@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Spring theme verification</title>
+<style>
+/* Minimal Typora native rules needed to exercise focus/selection compatibility. */
+:root { --text-color: #333333; --blur-text-color: #c8c8c8; --select-text-bg-color: #b5d5ff; --select-text-font-color: auto; }
+body { margin: 0; font-family: Arial, sans-serif; }
+content { display: block; }
+::selection { background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+.on-focus-mode #write > p { color: var(--blur-text-color); }
+.on-focus-mode #write > .md-focus { color: var(--text-color); }
+</style>
+<style id="theme">/* THEME_CSS */</style></head><body>
+<content><div id="write">
+<h1 id="heading">Spring · 春日笔记</h1>
+<h2 id="subheading">Theme layers</h2>
+<p id="active" class="md-focus">专注模式选中文本仍应清晰可读。Selected text stays readable.</p>
+<p id="inactive">正文与非焦点段落。<strong id="strong">Bold</strong> <em id="emphasis">Emphasis</em> <a id="link" href="#">Link</a> <code id="inline">code</code> <sup class="md-footnote" id="footnote">1</sup></p>
+<blockquote id="quote"><p>绿色引用块 · Blockquote</p><blockquote id="nested"><p>Nested quote</p><blockquote id="deep"><p>Third level</p></blockquote></blockquote></blockquote>
+<blockquote class="md-alert md-alert-caution" id="caution"><span class="md-alert-text">Caution</span><p><code id="caution-code">code</code> 警告提示</p></blockquote>
+<blockquote class="md-alert md-alert-warning" id="warning"><span class="md-alert-text">Warning</span><p><code id="warning-code">code</code> 危险提示</p></blockquote>
+<div class="md-table-fig"><table id="table"><thead><tr><th id="table-head">Header</th></tr></thead><tbody><tr><td id="table-cell">Cell</td></tr></tbody></table></div>
+<div class="md-fences cm-s-inner" id="fence"><span class="cm-keyword" id="keyword">const</span> <span class="cm-variable" id="variable">spring</span> = <span class="cm-string" id="string">"hello"</span>; <span class="cm-comment" id="comment">// comment</span><div class="CodeMirror-cursor" id="cursor"></div></div>
+<ul id="list"><li>List item</li><li class="task-list-item"><input type="checkbox" checked>Task item</li></ul>
+<hr id="rule">
+<img id="image" alt="white test image" width="180" height="55" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='55'%3E%3Crect width='180' height='55' fill='white'/%3E%3C/svg%3E">
+<pre class="md-meta-block" id="meta">title: Spring</pre>
+</div></content>
+<div id="typora-source"><div class="CodeMirror-lines" id="source">Source mode</div></div>
+<aside id="typora-sidebar"><div class="file-list-item" id="sidebar-item">Sidebar</div></aside>
+<div class="code-tooltip md-hover-tip" id="tooltip" contenteditable="false"><div class="code-tooltip-content">Footnote preview</div></div>
+<div class="modal-dialog" id="dialog"><input id="input" value="Preferences"><button id="button">Apply</button></div>
+</body></html>

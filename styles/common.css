@@ -1,0 +1,288 @@
+/* Shared personal typography, layout, and component behavior. */
+
+:root {
+    --hy-editor-max-width: 1280px;
+    --hy-font-size: 20px;
+    --hy-line-height: 1.8rem;
+    --scrollbar-thumb-hover-bg: var(--scrollbar-thumb-bg);
+    --scrollbar-thumb-active-bg: var(--scrollbar-thumb-bg);
+}
+
+html,
+body,
+content,
+#write {
+    color: var(--body-text-color);
+}
+
+html,
+body,
+content {
+    background-color: var(--content-write-bg-color);
+}
+
+#write,
+content #write {
+    background-color: var(--content-write-bg-color);
+    margin: 0 auto;
+    width: 100%;
+    max-width: var(--hy-editor-max-width);
+    min-width: 300px;
+    padding: 32px 112px;
+    box-sizing: border-box;
+    overflow: auto;
+}
+
+#typora-source .CodeMirror-lines {
+    margin: 0 auto;
+    max-width: var(--hy-editor-max-width);
+    min-width: 300px;
+    padding: 32px 112px;
+    box-sizing: border-box;
+}
+
+content #write p {
+    line-height: var(--hy-line-height);
+}
+
+content #write>p+p {
+    margin-top: 0.8rem;
+}
+
+ul,
+ol {
+    padding-left: 1.5rem;
+}
+
+#write h1 {
+    font-size: 2.25rem;
+}
+
+#write h1,
+#write h2 {
+    margin-top: 2rem;
+}
+
+#write h2 {
+    font-size: 1.8rem;
+}
+
+#write h3 {
+    font-size: 1.5rem;
+}
+
+#write h4 {
+    font-size: 1.25rem;
+}
+
+#write h5 {
+    font-size: 1.05rem;
+}
+
+#write h6 {
+    font-size: 1rem;
+}
+
+/* Keep the personal solid/green quote treatment as upstream evolves. */
+blockquote {
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+blockquote:hover {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: calc(0px + 1px * var(--blockquote-hover-effect) * var(--use-dynamic-effect)) calc(1px + 1px * var(--blockquote-hover-effect) * var(--use-dynamic-effect)) calc(3px + 3px * var(--blockquote-hover-effect) * var(--use-dynamic-effect)) rgba(0, 0, 0, calc(0.15 * var(--blockquote-hover-effect) * var(--use-dynamic-effect)));
+}
+
+blockquote blockquote {
+    background-color: var(--blockquote-nested-bg-color);
+    border-left-color: var(--blockquote-nested-border-color);
+}
+
+blockquote blockquote blockquote {
+    background-color: var(--blockquote-nested-deeper-bg-color);
+    border-left-color: var(--blockquote-nested-deeper-border-color);
+}
+
+.md-alert.md-alert-caution .md-alert-text-container,
+.md-alert.md-alert-caution .md-alert-text,
+.md-alert.md-alert-caution .md-alert-text-caution,
+.md-alert.md-alert-caution .md-alert-title,
+.md-alert.md-alert-caution .md-alert-icon,
+.md-alert.md-alert-caution .octicon,
+.md-alert.md-alert-caution svg,
+.md-alert.md-alert-caution code {
+    color: var(--alert-caution-text-color) !important;
+    fill: var(--alert-caution-text-color) !important;
+}
+
+.md-alert.md-alert-warning .md-alert-text-container,
+.md-alert.md-alert-warning .md-alert-text,
+.md-alert.md-alert-warning .md-alert-text-warning,
+.md-alert.md-alert-warning .md-alert-title,
+.md-alert.md-alert-warning .md-alert-icon,
+.md-alert.md-alert-warning .octicon,
+.md-alert.md-alert-warning svg,
+.md-alert.md-alert-warning code {
+    color: var(--alert-warning-text-color) !important;
+    fill: var(--alert-warning-text-color) !important;
+}
+
+#write sup.md-footnote {
+    color: var(--footnote-ref-color);
+    background-color: var(--footnote-ref-bg);
+}
+
+#write sup.md-footnote:hover {
+    color: var(--footnote-ref-hover-color);
+    background-color: var(--footnote-ref-hover-bg);
+}
+
+.code-tooltip.md-hover-tip,
+.md-hover-tip .code-tooltip-content {
+    color: var(--footnote-tooltip-color) !important;
+    background: var(--footnote-tooltip-bg-fallback) !important;
+    box-shadow: 0 10px 28px var(--footnote-tooltip-shadow), inset 0 0 0 1px var(--footnote-tooltip-border) !important;
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+}
+
+.code-tooltip[contenteditable="false"] {
+    border-radius: 7px;
+}
+
+#write pre.md-meta-block {
+    border: 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.md-hover-tip .code-tooltip-content a {
+    color: var(--footnote-tooltip-link-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content a:hover {
+    color: var(--footnote-tooltip-link-hover-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content strong {
+    color: var(--footnote-tooltip-strong-color) !important;
+}
+
+.md-hover-tip .code-tooltip-content em {
+    color: var(--footnote-tooltip-em-color) !important;
+}
+
+.md-arrow::after {
+    background: var(--footnote-tooltip-bg-fallback) !important;
+    border-bottom-color: var(--footnote-tooltip-bg-fallback) !important;
+    box-shadow: 0 1px 4px var(--footnote-tooltip-shadow) !important;
+}
+
+@supports ( (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) ) {
+    .code-tooltip.md-hover-tip,
+    .md-hover-tip .code-tooltip-content {
+        background: var(--footnote-tooltip-bg) !important;
+    }
+
+    .md-arrow::after {
+        background: var(--footnote-tooltip-bg) !important;
+        border-bottom-color: var(--footnote-tooltip-bg) !important;
+    }
+
+}
+
+/* Preserve the personal scrollbar shape and gradients in both directions. */
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    border: 0;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+    box-shadow: none;
+    transform: none;
+}
+
+.md-table-fig::-webkit-scrollbar-thumb:horizontal,
+.md-table-fig .md-table::-webkit-scrollbar-thumb:horizontal,
+.md-table-fig table::-webkit-scrollbar-thumb:horizontal,
+table::-webkit-scrollbar-thumb:horizontal {
+    background: var(--scrollbar-thumb-horizontal-bg);
+    border-radius: 6px;
+}
+
+@media screen and (max-width: 1724px) {
+    #write,
+    content #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 96px;
+    }
+
+}
+
+@media screen and (max-width: 1440px) {
+    #write,
+    content #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 80px;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    #write,
+    content #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 80px;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+    #write,
+    content #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px 60px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    #write,
+    content #write,
+    #typora-source .CodeMirror-lines {
+        padding: 32px;
+    }
+
+}
+
+html {
+    font-size: var(--hy-font-size);
+}
+
+/* These upstream wide-screen overrides were removed in the personal layout. */
+@media only screen and (min-width: 1400px) {
+    hr {
+        border-top: 2px solid transparent;
+        background-color: transparent;
+        height: 1.5px;
+        border-radius: 5px;
+    }
+
+    .md-fences:hover {
+        animation: bounce-code 0.5s ease-in-out;
+    }
+}
