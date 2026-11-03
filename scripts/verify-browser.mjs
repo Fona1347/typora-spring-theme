@@ -88,7 +88,8 @@ try {
     const result = {};
     const properties = ['color','background-color','background-image','font-size','line-height',
       'max-width','min-width','padding-top','padding-right','padding-bottom','padding-left',
-      'border-left-color','border-left-width','border-top-width','border-radius','box-shadow','filter','caret-color'];
+      'border-left-color','border-left-width','border-top-width','border-radius','box-shadow','filter','caret-color',
+      'opacity','backdrop-filter'];
     for (const node of document.querySelectorAll('[id]:not(style)')) {
       const style = getComputedStyle(node);
       result[node.id] = Object.fromEntries(properties.map(name => [name, style.getPropertyValue(name)]));
@@ -135,8 +136,21 @@ try {
       equal(actual['warning-code'].color, 'rgb(220, 38, 38)', label + ' warning');
       equal(actual.list['padding-left'], '30px', label + ' list indentation');
       equal(actual.meta['border-left-width'], '0px', label + ' metadata border');
+      // Check each compositing layer: parent opacity fades even fully opaque children.
+      equal(actual.tooltip.opacity, '1', label + ' hover preview opacity');
+      equal(actual['tooltip-content'].opacity, '1', label + ' preview text opacity');
+      equal(actual['tooltip-arrow'].opacity, '1', label + ' preview arrow opacity');
+      const tooltipBackground = dark ? 'rgb(48, 59, 53)' : 'rgb(238, 245, 234)';
+      equal(actual.tooltip['background-color'], tooltipBackground, label + ' opaque preview surface');
+      equal(actual['tooltip-content']['background-color'], 'rgba(0, 0, 0, 0)', label + ' single preview surface');
+      equal(actual['tooltip-content']['box-shadow'], 'none', label + ' no duplicate preview shadow');
+      equal(actual.tooltip['backdrop-filter'], 'none', label + ' preview backdrop');
+      equal(actual['tooltip-content'].color, dark ? body : 'rgb(38, 56, 46)', label + ' preview text color');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#tooltip-arrow'), '::after').backgroundColor`), tooltipBackground, label + ' matching preview arrow');
       if (screenshotsDir && name === 'spring.css') {
         await mkdir(screenshotsDir, { recursive: true });
+        // Put the preview over real document text to make bleed-through visible.
+        await evaluate(`document.querySelector('#tooltip').style.cssText='position:fixed;left:100px;right:100px;top:270px;z-index:100'`);
         const shot = await cdp('Page.captureScreenshot', { format: 'png' });
         await writeFile(path.join(screenshotsDir, `${scheme}.png`), Buffer.from(shot.data, 'base64'));
       }

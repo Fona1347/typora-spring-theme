@@ -8,6 +8,12 @@ content { display: block; }
 ::selection { background: var(--select-text-bg-color); color: var(--select-text-font-color); }
 .on-focus-mode #write > p { color: var(--blur-text-color); }
 .on-focus-mode #write > .md-focus { color: var(--text-color); }
+/* Typora dims both the hover preview's content and its arrow by default. */
+.code-tooltip-content { position: relative; background: inherit; padding: 1ch; }
+.md-hover-tip .code-tooltip-content,
+.md-hover-tip .md-arrow { opacity: .95; }
+.md-hover-tip .md-arrow { position: absolute; top: -5px; }
+.md-hover-tip .md-arrow::after { content: ''; position: absolute; width: 10px; height: 10px; transform: rotate(45deg); }
 </style>
 <style id="theme">/* THEME_CSS */</style></head><body>
 <content><div id="write">
@@ -27,6 +33,6 @@ content { display: block; }
 </div></content>
 <div id="typora-source"><div class="CodeMirror-lines" id="source">Source mode</div></div>
 <aside id="typora-sidebar"><div class="file-list-item" id="sidebar-item">Sidebar</div></aside>
-<div class="code-tooltip md-hover-tip" id="tooltip" contenteditable="false"><div class="code-tooltip-content">Footnote preview</div></div>
+<div class="code-tooltip md-hover-tip md-f-tooltip" id="tooltip" contenteditable="false"><span class="md-arrow" id="tooltip-arrow"></span><div class="code-tooltip-content" id="tooltip-content">引用预览应遮住下方正文，文字不能随背景一起变淡。Footnote preview text must remain readable over the document.<br><strong>Reference title</strong> · <em>Publication details</em> · <a href="#footnote">Return to text</a></div></div>
 <div class="modal-dialog" id="dialog"><input id="input" value="Preferences"><button id="button">Apply</button></div>
 </body></html>

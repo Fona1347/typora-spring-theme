@@ -116,8 +116,7 @@
     --footnote-ref-hover-color: #d0f7b3;
     --footnote-ref-bg: rgba(145, 212, 98, 0.14);
     --footnote-ref-hover-bg: rgba(145, 212, 98, 0.26);
-    --footnote-tooltip-bg-fallback: #303b35;
-    --footnote-tooltip-bg: rgba(48, 59, 53, 0.84);
+    --footnote-tooltip-bg: #303b35;
     --footnote-tooltip-color: var(--body-text-color);
     --footnote-tooltip-strong-color: #91D462;
     --footnote-tooltip-em-color: #d0f7b3;

@@ -2065,13 +2065,23 @@ blockquote blockquote blockquote {
     background-color: var(--footnote-ref-hover-bg);
 }
 
-.code-tooltip.md-hover-tip,
-.md-hover-tip .code-tooltip-content {
+/* Keep preview text opaque; paint the background once on the outer surface. */
+.code-tooltip.md-hover-tip {
+    opacity: 1;
     color: var(--footnote-tooltip-color) !important;
-    background: var(--footnote-tooltip-bg-fallback) !important;
+    background: var(--footnote-tooltip-bg) !important;
     box-shadow: 0 10px 28px var(--footnote-tooltip-shadow), inset 0 0 0 1px var(--footnote-tooltip-border) !important;
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.md-hover-tip .code-tooltip-content {
+    opacity: 1;
+    color: var(--footnote-tooltip-color) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
 }
 
 .code-tooltip[contenteditable="false"] {
@@ -2101,23 +2111,14 @@ blockquote blockquote blockquote {
     color: var(--footnote-tooltip-em-color) !important;
 }
 
-.md-arrow::after {
-    background: var(--footnote-tooltip-bg-fallback) !important;
-    border-bottom-color: var(--footnote-tooltip-bg-fallback) !important;
-    box-shadow: 0 1px 4px var(--footnote-tooltip-shadow) !important;
+.md-hover-tip .md-arrow {
+    opacity: 1;
 }
 
-@supports ( (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) ) {
-    .code-tooltip.md-hover-tip,
-    .md-hover-tip .code-tooltip-content {
-        background: var(--footnote-tooltip-bg) !important;
-    }
-
-    .md-arrow::after {
-        background: var(--footnote-tooltip-bg) !important;
-        border-bottom-color: var(--footnote-tooltip-bg) !important;
-    }
-
+.md-hover-tip .md-arrow::after {
+    background: var(--footnote-tooltip-bg) !important;
+    border-bottom-color: var(--footnote-tooltip-bg) !important;
+    box-shadow: 0 1px 4px var(--footnote-tooltip-shadow) !important;
 }
 
 /* Preserve the personal scrollbar shape and gradients in both directions. */
@@ -2336,8 +2337,7 @@ html {
     --footnote-ref-hover-color: #0e5235;
     --footnote-ref-bg: rgba(25, 135, 75, 0.10);
     --footnote-ref-hover-bg: rgba(25, 135, 75, 0.16);
-    --footnote-tooltip-bg-fallback: #eef5ea;
-    --footnote-tooltip-bg: rgba(238, 245, 234, 0.72);
+    --footnote-tooltip-bg: #eef5ea;
     --footnote-tooltip-color: #26382e;
     --footnote-tooltip-strong-color: #06621e;
     --footnote-tooltip-em-color: #359d09;
