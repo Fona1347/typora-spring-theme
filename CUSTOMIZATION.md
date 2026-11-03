@@ -33,6 +33,10 @@ python scripts/build.py --check
 
 - 字号、行高、最大宽度：`common.css` 中的 `--hy-font-size`、
   `--hy-line-height`、`--hy-editor-max-width`。
+- 正文与界面字体：`common.css` 中的 `--hy-font-ui`，当前依次为 Roboto、
+  PingFang SC、Microsoft YaHei UI、Noto Sans SC、sans-serif。字体按字符回退；
+  缺少苹方的 Windows 通常使用微软雅黑 UI 显示中文。推荐、许可与配置示例见
+  [README 字体说明](README_cn.md#字体推荐与配置)。
 - 浅色颜色：`light.css` 的变量。
 - 深色正文：`dark.css` 的 `--body-text-color`（当前 `#c9c5bc`）。
 - 深色图片：`--img-brightness`（当前 `0.9`）；悬停恢复原亮度，打印不调暗。

@@ -44,6 +44,7 @@
 - [设计元素](#设计元素)
 - [自定义配置](#自定义配置)
 - [快速安装与应用](#快速安装与应用)
+- [字体推荐与配置](#字体推荐与配置)
 - [Todo List](#Todo-List)
 - [致谢](#致谢)
 - [许可](#许可)
@@ -190,6 +191,66 @@
    `python scripts/build.py` 重新生成。三个字体实验版保存在
    `legacy/font-variants/`，不再维护或安装。
 4. 重启 Typora，然后主题列表中就可以选择使用 **Spring**、**Spring Light** 或 **Spring Dark** 主题。
+
+## 字体推荐与配置
+
+三款个人主题的正文、标题与界面统一使用下面的字体顺序；代码字体仍沿用基础主题的
+`Fira Code → Consolas → … → monospace`。主题只引用本机字体，仓库不包含字体文件，
+也不会联网加载字体。`legacy/font-variants/` 是历史快照，无需安装它们来启用此配置。
+
+```css
+/* styles/common.css：当前正文与界面配置 */
+:root {
+    --hy-font-ui: "Roboto", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
+}
+```
+
+字体按字符选择：英文与数字优先 Roboto；中文在 macOS 上可用苹方，在没有苹方的
+Windows 上依次尝试微软雅黑 UI、Noto Sans SC。字体名需要与系统中安装的字体家族名称一致，
+并不等同于字体文件名。
+
+| 字体 | 建议用途 | 许可证 | 官方下载或获取入口 |
+| --- | --- | --- | --- |
+| Roboto | 英文正文、数字和界面 | 新版 [OFL 1.1](https://github.com/googlefonts/roboto-3-classic/blob/main/OFL.txt)；部分旧版为 [Apache 2.0](https://github.com/google/roboto/blob/main/LICENSE)，以下载包为准 | [Google Fonts](https://fonts.google.com/specimen/Roboto) |
+| Noto Sans SC | 简体中文正文；跨平台开源字体组合 | [OFL 1.1](https://github.com/google/fonts/blob/main/ofl/notosanssc/OFL.txt) | [Google Fonts](https://fonts.google.com/specimen/Noto+Sans+SC) |
+| Fira Code | 基础主题首选的代码字体 | [OFL 1.1](https://github.com/tonsky/FiraCode/blob/master/LICENSE) | [官方发行页](https://github.com/tonsky/FiraCode/releases) |
+| Cascadia Code | 代码块、源码模式；历史字体版采用的代码字体 | [OFL 1.1](https://github.com/microsoft/cascadia-code/blob/main/LICENSE) | [官方发行页](https://github.com/microsoft/cascadia-code/releases) |
+| JetBrains Mono | 代码字体的另一选择 | [OFL 1.1](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt) | [官方网站](https://www.jetbrains.com/lp/mono/) |
+| Sarasa Mono SC（更纱等宽） | 混合中英文的代码和中文注释；选择 Mono SC 字体包 | [OFL 1.1](https://github.com/be5invis/Sarasa-Gothic/blob/master/LICENSE) | [官方发行页](https://github.com/be5invis/Sarasa-Gothic/releases) |
+| Maple Mono CN / NF CN | 带中文字符的等宽代码字体；NF 变体另含图标 | OFL 1.1；保留所选发行包中的许可文件 | [官方项目与下载说明](https://github.com/subframe7536/maple-font#readme) |
+| LXGW WenKai（霞鹜文楷） | 偏手写风格的中文阅读；作为可选正文风格 | [OFL 1.1](https://github.com/lxgw/LxgwWenKai/blob/master/OFL.txt) | [官方发行页](https://github.com/lxgw/LxgwWenKai/releases) |
+| PingFang SC（苹方） | macOS 的中文系统字体 | 非开源；按 [Apple 系统许可](https://www.apple.com/legal/sla/docs/macOSTahoe.pdf)使用 | 随 macOS 获取，参见 [Apple 字体列表](https://support.apple.com/en-us/122869)；不提供 Windows 字体包 |
+| Microsoft YaHei UI（微软雅黑 UI） | Windows 的中文系统字体 | 非开源；按 [Windows 字体许可](https://learn.microsoft.com/en-us/typography/fonts/font-faq)使用 | 随相应 Windows 系统获取，参见 [微软字体页面](https://learn.microsoft.com/en-us/typography/font-list/microsoft-yahei) |
+
+下载开源字体后，解压并安装所需的桌面 `.ttf` / `.otf` 文件，再重启 Typora。
+不必安装推荐表中的所有字体；正文与代码各选择一套即可。苹方、微软雅黑的系统使用权
+不等于字体文件再分发权；主题的 MIT 许可证也不替代字体各自的许可。若将来另行分发
+OFL 字体，应随附版权与许可文本，并遵守保留字体名称等条件。
+
+希望优先使用开源中文字体时，可以把 `styles/common.css` 中的变量改为：
+
+```css
+:root {
+    --hy-font-ui: "Roboto", "Noto Sans SC", sans-serif;
+}
+```
+
+代码字体可独立选择，例如将下面这段添加到 `styles/common.css`：
+
+```css
+#write code,
+#write pre,
+.md-fences,
+.CodeMirror,
+.CodeMirror pre,
+#typora-source,
+#typora-source .CodeMirror {
+    font-family: "Cascadia Code", "Sarasa Mono SC", Consolas, monospace;
+}
+```
+
+修改后运行 `python scripts/build.py` 和 `python scripts/build.py --check`，
+再把 `dist/` 中的主题复制到 Typora。完整流程见[个人版维护说明](CUSTOMIZATION.md)。
 
 ## Todo List
 

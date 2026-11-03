@@ -1925,10 +1925,47 @@ html {
 
 :root {
     --hy-editor-max-width: 1280px;
+    --hy-font-ui: "Roboto", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
     --hy-font-size: 20px;
     --hy-line-height: 1.8rem;
     --scrollbar-thumb-hover-bg: var(--scrollbar-thumb-bg);
     --scrollbar-thumb-active-bg: var(--scrollbar-thumb-bg);
+}
+
+/* Restore the former font variant's body/UI stack in the maintained themes. */
+html,
+body,
+content,
+#write,
+#typora-sidebar,
+.ty-preferences,
+.window,
+.megamenu-menu,
+.megamenu-content,
+.megamenu-menu-panel,
+.modal-content,
+.dropdown-menu,
+.auto-suggest-container,
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6,
+#write p,
+#write li,
+#write table,
+#write blockquote,
+#write .md-alert,
+.outline-content,
+.file-list-item,
+.file-node-title,
+.nav-group-item,
+input,
+textarea,
+select,
+button {
+    font-family: var(--hy-font-ui);
 }
 
 html,
