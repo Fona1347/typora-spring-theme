@@ -122,6 +122,15 @@ try {
       const body = dark ? 'rgb(201, 197, 188)' : 'rgb(40, 44, 52)';
       equal(actual.active.color, body, label + ' text');
       equal(actual.write['background-color'], dark ? 'rgb(35, 34, 34)' : 'rgb(255, 253, 248)', label + ' background');
+      const searchBackground = dark ? 'rgb(231, 199, 107)' : 'rgb(255, 230, 154)';
+      for (const id of ['search-hit', 'search-code', 'search-sidebar']) {
+        equal(actual[id]['background-color'], searchBackground, label + ' ' + id + ' background');
+        equal(actual[id].color, 'rgb(48, 35, 14)', label + ' ' + id + ' text');
+      }
+      equal(actual['search-current']['background-color'], dark ? 'rgb(255, 173, 77)' : 'rgb(255, 180, 84)', label + ' current search background');
+      for (const id of ['search-hit-child', 'search-current', 'search-current-child']) {
+        equal(actual[id].color, 'rgb(48, 35, 14)', label + ' ' + id + ' text');
+      }
       equal(actual.quote['background-color'], dark ? 'rgb(39, 53, 45)' : 'rgb(232, 244, 235)', label + ' quote');
       equal(actual.nested['border-left-color'], dark ? 'rgb(79, 148, 109)' : 'rgb(43, 118, 85)', label + ' nested quote');
       equal(actual.deep['border-left-color'], dark ? 'rgb(64, 130, 94)' : 'rgb(37, 106, 75)', label + ' deep quote');

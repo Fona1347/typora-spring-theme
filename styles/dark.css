@@ -4,6 +4,10 @@
     --body-text-color: #c9c5bc;
     --content-write-bg-color: #232222;
     --selection-color: #4f4d4d;
+    --hy-search-hit-bg: #e7c76b;
+    --hy-search-current-bg: #ffad4d;
+    --hy-search-text: #30230e;
+    --search-select-bg-color: var(--hy-search-current-bg);
     --img-brightness: 0.9;
     /* Typora native focus/selection colors must follow the personal palette. */
     --text-color: var(--body-text-color);

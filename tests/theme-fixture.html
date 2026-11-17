@@ -21,18 +21,19 @@ content { display: block; }
 <h2 id="subheading">Theme layers</h2>
 <p id="active" class="md-focus">专注模式选中文本仍应清晰可读。Selected text stays readable.</p>
 <p id="inactive">正文与非焦点段落。<strong id="strong">Bold</strong> <em id="emphasis">Emphasis</em> <a id="link" href="#">Link</a> <code id="inline">code</code> <sup class="md-footnote" id="footnote">1</sup></p>
+<p>Search: <span class="md-search-hit" id="search-hit"><strong id="search-hit-child">match</strong></span> <span class="md-search-hit md-search-select" id="search-current"><em id="search-current-child">current</em></span></p>
 <blockquote id="quote"><p>绿色引用块 · Blockquote</p><blockquote id="nested"><p>Nested quote</p><blockquote id="deep"><p>Third level</p></blockquote></blockquote></blockquote>
 <blockquote class="md-alert md-alert-caution" id="caution"><span class="md-alert-text">Caution</span><p><code id="caution-code">code</code> 警告提示</p></blockquote>
 <blockquote class="md-alert md-alert-warning" id="warning"><span class="md-alert-text">Warning</span><p><code id="warning-code">code</code> 危险提示</p></blockquote>
 <div class="md-table-fig"><table id="table"><thead><tr><th id="table-head">Header</th></tr></thead><tbody><tr><td id="table-cell">Cell</td></tr></tbody></table></div>
-<div class="md-fences cm-s-inner" id="fence"><span class="cm-keyword" id="keyword">const</span> <span class="cm-variable" id="variable">spring</span> = <span class="cm-string" id="string">"hello"</span>; <span class="cm-comment" id="comment">// comment</span><div class="CodeMirror-cursor" id="cursor"></div></div>
+<div class="md-fences cm-s-inner" id="fence"><span class="cm-keyword" id="keyword">const</span> <span class="cm-variable" id="variable">spring</span> = <span class="cm-string" id="string">"hello"</span>; <span class="cm-comment" id="comment">// comment</span> <span class="cm-string cm-searching" id="search-code">code match</span><div class="CodeMirror-cursor" id="cursor"></div></div>
 <ul id="list"><li>List item</li><li class="task-list-item"><input type="checkbox" checked>Task item</li></ul>
 <hr id="rule">
 <img id="image" alt="white test image" width="180" height="55" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='55'%3E%3Crect width='180' height='55' fill='white'/%3E%3C/svg%3E">
 <pre class="md-meta-block" id="meta">title: Spring</pre>
 </div></content>
 <div id="typora-source"><div class="CodeMirror-lines" id="source">Source mode</div></div>
-<aside id="typora-sidebar"><div class="file-list-item" id="sidebar-item">Sidebar</div></aside>
+<aside id="typora-sidebar"><div class="file-list-item" id="sidebar-item">Sidebar <span class="ty-file-search-match-text" id="search-sidebar">match</span></div></aside>
 <div class="code-tooltip md-hover-tip md-f-tooltip" id="tooltip" contenteditable="false"><span class="md-arrow" id="tooltip-arrow"></span><div class="code-tooltip-content" id="tooltip-content">引用预览应遮住下方正文，文字不能随背景一起变淡。Footnote preview text must remain readable over the document.<br><strong>Reference title</strong> · <em>Publication details</em> · <a href="#footnote">Return to text</a></div></div>
 <div class="modal-dialog" id="dialog"><input id="input" value="Preferences"><button id="button">Apply</button></div>
 </body></html>
