@@ -24,6 +24,39 @@
 
 ---
 
+## 快速安装与应用
+
+### 方式一：AI Agent 一键安装（推荐）
+
+如果你正在使用 Claude Code、Cursor、Codex、Antigravity 等 Agent 工具，直接复制下面这段提示词发给它，即可自动完成下载、备份、安装、字体核查并给你一句简报：
+
+```text
+请帮我自动安装 Typora 的 Spring 科研主题（https://github.com/Fona1347/typora-spring-theme）：
+1. 识别我当前的操作系统并定位 Typora 主题目录（Windows: %APPDATA%\Typora\themes；macOS: ~/Library/Application Support/abnerworks.Typora/themes；Linux: ~/.config/Typora/themes）。
+2. 从该仓库的最新 GitHub Release 下载发布包（若无 Release 则从默认分支 hy-spring 的 dist/ 获取），若目标目录已有同名 spring*.css 请先备份为 .bak，再安装 spring.css（自动）、spring-light.css（浅色）、spring-dark.css（深色）。
+3. 验收：确认 3 个 CSS 文件存在且非空、未破坏其他主题；顺便检查本机是否安装了推荐字体（Roboto、Noto Sans SC 或 霞鹜文楷、Fira Code）。
+4. 完成后只给我一句简洁汇报：包含安装路径、已安装的主题名、是否缺少推荐字体，以及提示我重启 Typora 即可切换。
+```
+
+### 方式二：手动下载安装（Release 压缩包或 Git）
+
+1. **[直接下载最新 Release 压缩包（`v1.0.0`）](https://github.com/Fona1347/typora-spring-theme/releases/latest)**（推荐，内含 3 份独立成品 CSS、`DEMO.md` 与 `LICENSE`，解压即用），或克隆本仓库（默认分支已是 `hy-spring`）：
+
+   ```bash
+   git clone https://github.com/Fona1347/typora-spring-theme.git
+   ```
+
+2. 打开 Typora，点击左上角 **文件 → 偏好设置 → 外观 → 打开主题文件夹**。
+3. 将 `spring.css`、`spring-light.css`、`spring-dark.css`（位于 Release 压缩包或仓库 `dist/` 目录）复制到 Typora 主题文件夹：
+   - `spring.css`：自动跟随系统浅色/暗色模式。
+   - `spring-light.css`：固定浅色 Spring 主题。
+   - `spring-dark.css`：固定暗色 Spring Dark（SprIngNight）主题。
+
+   > `dist/` 与 Release 中的三个 CSS 均为独立成品，不依赖额外资源；**无需**复制 `styles/` 或根目录的上游 `spring.css`。
+4. 重启 Typora，在顶部 **主题** 菜单中选择 **Spring**、**Spring Light** 或 **Spring Dark**，并可直接打开 [`DEMO.md`](DEMO.md) 一键检验全部排版与交互效果。
+
+---
+
 ## 浅色 / 深色实景展示
 
 以下两张预览图均直接由仓库当前的 [`dist/spring-light.css`](dist/spring-light.css) 与 [`dist/spring-dark.css`](dist/spring-dark.css) 真实渲染生成，完整覆盖正文排版、搜索高亮、IEEE 引用悬浮窗、嵌套引用、GitHub Alerts、表格、代码块、任务列表、数学公式与 Mermaid 流程图（点击图片可查看 2x 高清原图）。
@@ -88,39 +121,6 @@
   - **PDF / 周报导出打印专项优化（`@media print`）**：哪怕在深色主题下导出 PDF 也会自动切回清爽白底深字；为标题、表格、代码块、数学公式、Alert 与 Mermaid 图添加防跨页撕裂规则；内置打印图片尺寸控制（`--hy-print-img-max-height: 22cm`、`max-width: 100%`、`object-fit: contain`），防止超高实验图被裁切。
   - **科研扩展能力**：支持 `<div class="img-grid">` 实验对比图自动并排与图注、`<div class="booktabs">` 学术三线表（可一键切全局）、可选 H2–H4 章节自动编号，以及一行开启的 **安静长文模式（Calm Mode）**。
   - **排版与组件增强**：`1280px` 舒适阅读宽度、多级嵌套引用层次、五色 GitHub Alert 提示块、优雅滚动条与表格视觉微调。
-
----
-
-## 快速安装与应用
-
-### 方式一：AI Agent 一键安装（推荐）
-
-如果你正在使用 Claude Code、Cursor、Codex、Antigravity 等 Agent 工具，直接复制下面这段提示词发给它，即可自动完成下载、备份、安装、字体核查并给你一句简报：
-
-```text
-请帮我自动安装 Typora 的 Spring 科研主题（https://github.com/Fona1347/typora-spring-theme）：
-1. 识别我当前的操作系统并定位 Typora 主题目录（Windows: %APPDATA%\Typora\themes；macOS: ~/Library/Application Support/abnerworks.Typora/themes；Linux: ~/.config/Typora/themes）。
-2. 从该仓库的最新 GitHub Release 下载发布包（若无 Release 则从默认分支 hy-spring 的 dist/ 获取），若目标目录已有同名 spring*.css 请先备份为 .bak，再安装 spring.css（自动）、spring-light.css（浅色）、spring-dark.css（深色）。
-3. 验收：确认 3 个 CSS 文件存在且非空、未破坏其他主题；顺便检查本机是否安装了推荐字体（Roboto、Noto Sans SC 或 霞鹜文楷、Fira Code）。
-4. 完成后只给我一句简洁汇报：包含安装路径、已安装的主题名、是否缺少推荐字体，以及提示我重启 Typora 即可切换。
-```
-
-### 方式二：手动下载安装（Release 压缩包或 Git）
-
-1. **[直接下载最新 Release 压缩包（`v1.0.0`）](https://github.com/Fona1347/typora-spring-theme/releases/latest)**（推荐，内含 3 份独立成品 CSS、`DEMO.md` 与 `LICENSE`，解压即用），或克隆本仓库（默认分支已是 `hy-spring`）：
-
-   ```bash
-   git clone https://github.com/Fona1347/typora-spring-theme.git
-   ```
-
-2. 打开 Typora，点击左上角 **文件 → 偏好设置 → 外观 → 打开主题文件夹**。
-3. 将 `spring.css`、`spring-light.css`、`spring-dark.css`（位于 Release 压缩包或仓库 `dist/` 目录）复制到 Typora 主题文件夹：
-   - `spring.css`：自动跟随系统浅色/暗色模式。
-   - `spring-light.css`：固定浅色 Spring 主题。
-   - `spring-dark.css`：固定暗色 Spring Dark（SprIngNight）主题。
-
-   > `dist/` 与 Release 中的三个 CSS 均为独立成品，不依赖额外资源；**无需**复制 `styles/` 或根目录的上游 `spring.css`。
-4. 重启 Typora，在顶部 **主题** 菜单中选择 **Spring**、**Spring Light** 或 **Spring Dark**，并可直接打开 [`DEMO.md`](DEMO.md) 一键检验全部排版与交互效果。
 
 ---
 

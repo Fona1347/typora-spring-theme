@@ -24,6 +24,39 @@
 
 ---
 
+## Installation
+
+### Option A: One-Shot AI Agent Install (Recommended)
+
+Copy and paste the prompt below into your AI coding agent (Claude Code, Cursor, Codex, Antigravity, etc.) to download the latest release, install safely with backups, verify fonts, and return a one-line report:
+
+```text
+Install the Typora Spring Academic theme from https://github.com/Fona1347/typora-spring-theme:
+1. Detect my OS and locate the Typora themes folder (Windows: %APPDATA%\Typora\themes; macOS: ~/Library/Application Support/abnerworks.Typora/themes; Linux: ~/.config/Typora/themes).
+2. Download the latest GitHub Release zip (or fall back to dist/ on the default hy-spring branch), back up any existing spring*.css as .bak, and install spring.css (Auto), spring-light.css (Light), and spring-dark.css (Dark).
+3. Verify all 3 CSS files exist and are non-empty without touching other themes, and check whether recommended fonts (Roboto, Noto Sans SC / LXGW WenKai, Fira Code) are installed locally.
+4. Reply with a single-sentence summary: install path, installed theme names, any missing recommended fonts, and a reminder to restart Typora.
+```
+
+### Option B: Manual Install (Release Zip or Git)
+
+1. **[Download the Latest Release (`v1.0.0`)](https://github.com/Fona1347/typora-spring-theme/releases/latest)** (recommended — includes only the 3 ready-to-use CSS files, `DEMO.md`, and `LICENSE`), or clone this repository (default branch is `hy-spring`):
+
+   ```bash
+   git clone https://github.com/Fona1347/typora-spring-theme.git
+   ```
+
+2. Open Typora → **Preferences → Appearance → Open Theme Folder**.
+3. Copy the theme file(s) you want (`dist/spring.css`, `dist/spring-light.css`, `dist/spring-dark.css`) into the Typora theme folder:
+   - `spring.css` — Auto (follows system Light/Dark)
+   - `spring-light.css` — Fixed Light
+   - `spring-dark.css` — Fixed Dark (SprIngNight)
+
+   > All files in `dist/` (and the Release zip) are self-contained. Do **not** copy `styles/` or the root `spring.css` (which is the unmodified upstream base).
+4. Restart Typora, choose **Spring**, **Spring Light**, or **Spring Dark** under **Themes**, and open [`DEMO.md`](DEMO.md) to preview every element live.
+
+---
+
 ## Light &amp; Dark Preview
 
 Both screenshots below are rendered directly from the generated [`dist/spring-light.css`](dist/spring-light.css) and [`dist/spring-dark.css`](dist/spring-dark.css) themes, showcasing typography, search highlights, IEEE citation hover cards, nested blockquotes, GitHub Alerts, tables, code blocks, task lists, math equations, and Mermaid diagrams.
@@ -88,39 +121,6 @@ Designed for graduate students and researchers: multi-line `aligned` derivations
   - **Print &amp; PDF Export Ready (`@media print`)**: Automatically falls back to a crisp light canvas even when exporting from Dark mode, prevents awkward page breaks across headings/tables/code/equations/Mermaid diagrams, and constrains figure dimensions (`--hy-print-img-max-height: 22cm`, `max-width: 100%`, `object-fit: contain`).
   - **Academic Extras Built-In**: Side-by-side experiment figures (`<div class="img-grid">`), opt-in Booktabs three-line tables (`<div class="booktabs">` or global toggle), opt-in H2–H4 auto-numbering, and a one-line **Calm Mode** (`--use-dynamic-effect: 0`) for distraction-free long manuscripts.
   - **Typography &amp; Layout**: Comfortable `1280px` reading width, balanced heading hierarchy, refined nested blockquotes, five-color GitHub Alerts, and clean scrollbars.
-
----
-
-## Installation
-
-### Option A: One-Shot AI Agent Install (Recommended)
-
-Copy and paste the prompt below into your AI coding agent (Claude Code, Cursor, Codex, Antigravity, etc.) to download the latest release, install safely with backups, verify fonts, and return a one-line report:
-
-```text
-Install the Typora Spring Academic theme from https://github.com/Fona1347/typora-spring-theme:
-1. Detect my OS and locate the Typora themes folder (Windows: %APPDATA%\Typora\themes; macOS: ~/Library/Application Support/abnerworks.Typora/themes; Linux: ~/.config/Typora/themes).
-2. Download the latest GitHub Release zip (or fall back to dist/ on the default hy-spring branch), back up any existing spring*.css as .bak, and install spring.css (Auto), spring-light.css (Light), and spring-dark.css (Dark).
-3. Verify all 3 CSS files exist and are non-empty without touching other themes, and check whether recommended fonts (Roboto, Noto Sans SC / LXGW WenKai, Fira Code) are installed locally.
-4. Reply with a single-sentence summary: install path, installed theme names, any missing recommended fonts, and a reminder to restart Typora.
-```
-
-### Option B: Manual Install (Release Zip or Git)
-
-1. **[Download the Latest Release (`v1.0.0`)](https://github.com/Fona1347/typora-spring-theme/releases/latest)** (recommended — includes only the 3 ready-to-use CSS files, `DEMO.md`, and `LICENSE`), or clone this repository (default branch is `hy-spring`):
-
-   ```bash
-   git clone https://github.com/Fona1347/typora-spring-theme.git
-   ```
-
-2. Open Typora → **Preferences → Appearance → Open Theme Folder**.
-3. Copy the theme file(s) you want (`dist/spring.css`, `dist/spring-light.css`, `dist/spring-dark.css`) into the Typora theme folder:
-   - `spring.css` — Auto (follows system Light/Dark)
-   - `spring-light.css` — Fixed Light
-   - `spring-dark.css` — Fixed Dark (SprIngNight)
-
-   > All files in `dist/` (and the Release zip) are self-contained. Do **not** copy `styles/` or the root `spring.css` (which is the unmodified upstream base).
-4. Restart Typora, choose **Spring**, **Spring Light**, or **Spring Dark** under **Themes**, and open [`DEMO.md`](DEMO.md) to preview every element live.
 
 ---
 
