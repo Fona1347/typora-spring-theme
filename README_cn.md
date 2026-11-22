@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="./README.md">English</a> · <strong>简体中文</strong> · <a href="./CUSTOMIZATION.md">个人版维护与同步说明</a>
+  <a href="./README.md">English</a> · <strong>简体中文</strong> · <a href="./DEMO.md">本地演示文档（<code>DEMO.md</code>）</a> · <a href="./CUSTOMIZATION.md">个人版维护与同步说明</a>
 </p>
 
 > **分支说明：** 本仓库默认分支为 **`hy-spring`**。日常使用直接从 [`dist/`](dist/) 安装三款独立成品主题；个性化调整写在 [`styles/`](styles/) 中。根目录 [`spring.css`](spring.css) 与 `main` 分支始终保持上游原样，便于后续同步原作者更新。

@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <strong>English</strong> · <a href="./README_cn.md">简体中文</a> · <a href="./CUSTOMIZATION.md">Maintenance &amp; Sync Guide</a>
+  <strong>English</strong> · <a href="./README_cn.md">简体中文</a> · <a href="./DEMO.md">Interactive Demo (<code>DEMO.md</code>)</a> · <a href="./CUSTOMIZATION.md">Maintenance &amp; Sync Guide</a>
 </p>
 
 > **Branch guide:** This fork uses **`hy-spring`** as its default branch. Install the standalone themes directly from [`dist/`](dist/), and edit [`styles/`](styles/) for personal overrides. Root [`spring.css`](spring.css) stays identical to upstream `main` (`SprInec/typora-spring-theme`) for clean upstream syncing.
