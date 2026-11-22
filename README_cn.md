@@ -59,7 +59,11 @@
 
 ## 浅色 / 深色实景展示
 
-以下两张预览图均直接由仓库当前的 [`dist/spring-light.css`](dist/spring-light.css) 与 [`dist/spring-dark.css`](dist/spring-dark.css) 真实渲染生成，完整覆盖正文排版、搜索高亮、IEEE 引用悬浮窗、嵌套引用、GitHub Alerts、表格、代码块、任务列表、数学公式与 Mermaid 流程图（点击图片可查看 2x 高清原图）。
+<p align="center">
+  <img src=".assets/demo-showcase.gif" alt="Typora Spring 浅色与深色动态演示" width="100%" />
+</p>
+
+以下静态 2x 高清对比图均直接由仓库当前的 [`dist/spring-light.css`](dist/spring-light.css) 与 [`dist/spring-dark.css`](dist/spring-dark.css) 真实渲染生成，完整覆盖正文排版、搜索高亮、IEEE 引用悬浮窗、嵌套引用、GitHub Alerts、表格、代码块、任务列表、数学公式与 Mermaid 流程图（点击图片可查看原图）。
 
 <table>
   <thead>
