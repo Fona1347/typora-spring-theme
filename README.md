@@ -85,26 +85,42 @@ Designed for graduate students and researchers: multi-line `aligned` derivations
   - **Search Highlight Legibility**: `.md-search-hit`, `.md-search-select`, `.cm-searching`, and sidebar matches stay readable over bold, italic, links, and syntax-highlighted code.
   - **Footnote &amp; Citation Hover Previews**: Single-surface opaque card (`opacity: 1`) with crisp typography so underlying body text never bleeds through.
   - **Focus Mode &amp; Selection Alignment**: Typora native `--text-color`, `--blur-text-color`, `--select-text-bg-color`, and `--select-text-font-color` are aligned in both themes.
+  - **Print &amp; PDF Export Ready (`@media print`)**: Automatically falls back to a crisp light canvas even when exporting from Dark mode, prevents awkward page breaks across headings/tables/code/equations/Mermaid diagrams, and constrains figure dimensions (`--hy-print-img-max-height: 22cm`, `max-width: 100%`, `object-fit: contain`).
+  - **Academic Extras Built-In**: Side-by-side experiment figures (`<div class="img-grid">`), opt-in Booktabs three-line tables (`<div class="booktabs">` or global toggle), opt-in H2–H4 auto-numbering, and a one-line **Calm Mode** (`--use-dynamic-effect: 0`) for distraction-free long manuscripts.
   - **Typography &amp; Layout**: Comfortable `1280px` reading width, balanced heading hierarchy, refined nested blockquotes, five-color GitHub Alerts, and clean scrollbars.
 
 ---
 
 ## Installation
 
-1. Clone this repository (default branch is `hy-spring`) or download the ZIP archive from GitHub:
+### Option A: One-Shot AI Agent Install (Recommended)
+
+Copy and paste the prompt below into your AI coding agent (Claude Code, Cursor, Codex, Antigravity, etc.) to download the latest release, install safely with backups, verify fonts, and return a one-line report:
+
+```text
+Install the Typora Spring Academic theme from https://github.com/Fona1347/typora-spring-theme:
+1. Detect my OS and locate the Typora themes folder (Windows: %APPDATA%\Typora\themes; macOS: ~/Library/Application Support/abnerworks.Typora/themes; Linux: ~/.config/Typora/themes).
+2. Download the latest GitHub Release zip (or fall back to dist/ on the default hy-spring branch), back up any existing spring*.css as .bak, and install spring.css (Auto), spring-light.css (Light), and spring-dark.css (Dark).
+3. Verify all 3 CSS files exist and are non-empty without touching other themes, and check whether recommended fonts (Roboto, Noto Sans SC / LXGW WenKai, Fira Code) are installed locally.
+4. Reply with a single-sentence summary: install path, installed theme names, any missing recommended fonts, and a reminder to restart Typora.
+```
+
+### Option B: Manual Install (Release Zip or Git)
+
+1. **[Download the Latest Release (`v1.0.0`)](https://github.com/Fona1347/typora-spring-theme/releases/latest)** (recommended — includes only the 3 ready-to-use CSS files, `DEMO.md`, and `LICENSE`), or clone this repository (default branch is `hy-spring`):
 
    ```bash
    git clone https://github.com/Fona1347/typora-spring-theme.git
    ```
 
 2. Open Typora → **Preferences → Appearance → Open Theme Folder**.
-3. Copy the theme file(s) you want from `dist/` into the Typora theme folder:
-   - `dist/spring.css` — Auto (follows system Light/Dark)
-   - `dist/spring-light.css` — Fixed Light
-   - `dist/spring-dark.css` — Fixed Dark (SprIngNight)
+3. Copy the theme file(s) you want (`dist/spring.css`, `dist/spring-light.css`, `dist/spring-dark.css`) into the Typora theme folder:
+   - `spring.css` — Auto (follows system Light/Dark)
+   - `spring-light.css` — Fixed Light
+   - `spring-dark.css` — Fixed Dark (SprIngNight)
 
-   > All files in `dist/` are self-contained. Do **not** copy `styles/` or the root `spring.css` (which is the unmodified upstream base).
-4. Restart Typora and choose **Spring**, **Spring Light**, or **Spring Dark** under **Themes**.
+   > All files in `dist/` (and the Release zip) are self-contained. Do **not** copy `styles/` or the root `spring.css` (which is the unmodified upstream base).
+4. Restart Typora, choose **Spring**, **Spring Light**, or **Spring Dark** under **Themes**, and open [`DEMO.md`](DEMO.md) to preview every element live.
 
 ---
 
@@ -118,14 +134,18 @@ python scripts/build.py --check
 node scripts/verify-browser.mjs
 ```
 
-- **Toggle interactive effects**: Check the effect flags at the top of root `spring.css` (e.g. `--use-dynamic-effect`, `--p-hover-effect`, `--table-hover-effect`), override them in `styles/common.css` (`0` = off, `1` = on), and rebuild.
-- **Typography &amp; width**: Adjust `--hy-font-ui`, `--hy-font-size`, `--hy-line-height`, and `--hy-editor-max-width` in `styles/common.css`.
+- **Calm Mode (zero-jitter long-form writing)**: Uncomment `--use-dynamic-effect: 0;` in `styles/common.css` (`:root`) and rebuild to disable hover motion animations while keeping all colors and typography intact.
+- **Booktabs three-line tables &amp; H2–H4 auto-numbering**: Wrap any table in `<div class="booktabs">...</div>` for instant three-line styling, or uncomment the global Booktabs / auto-numbering blocks in `styles/common.css` and rebuild.
+- **Side-by-side experiment figures**: Wrap 2–3 `<figure>` or `<p>` image blocks inside `<div class="img-grid">...</div>` (see [`DEMO.md`](DEMO.md)).
+- **Typography, width &amp; print image height**: Adjust `--hy-font-ui`, `--hy-font-size`, `--hy-line-height`, `--hy-editor-max-width`, and `--hy-print-img-max-height` in `styles/common.css`.
 - **Colors &amp; dark image brightness**: Adjust variables in `styles/light.css` and `styles/dark.css` (`--img-brightness` defaults to `0.9`).
 - For full build, verification, and upstream-sync instructions, see [CUSTOMIZATION.md](CUSTOMIZATION.md).
 
 ---
 
 ## Font Recommendations &amp; Configuration
+
+> **Quick-start pick (minimal setup):** Install just **Roboto** (Latin/numbers) + **Noto Sans SC** or **LXGW WenKai** (Chinese) + **Fira Code** (code) to match the previews out of the box.
 
 The maintained themes use a local-only font stack (no bundled font files, no network requests); code blocks continue to use `Fira Code → Consolas → … → monospace`:
 

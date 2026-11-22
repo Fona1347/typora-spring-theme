@@ -219,3 +219,47 @@ gantt
     Manuscript & Camera-Ready    :         s4, after s3, 18d
     Submission DDL               :milestone, m1, after s4, 0d
 ```
+
+---
+
+## 10. 学术三线表、实验对比图并排与 PDF 导出检验
+
+### 10.1 单表学术三线表（`<div class="booktabs">`）
+
+<div class="booktabs">
+
+| Model | Parameters | ImageNet Top-1 (%) | Latency (ms) |
+| :--- | :---: | :---: | ---: |
+| Baseline-ResNet50 | 25.6M | 76.1 | 12.4 |
+| Ours (w/o Fusion) | 28.2M | 79.4 | 13.8 |
+| **Ours (Full)** | **29.1M** | **81.7** | **14.2** |
+
+</div>
+
+### 10.2 实验对比图并排排版（`<div class="img-grid">`）
+
+```html
+<div class="img-grid">
+  <figure>
+    <img src=".assets/preview-light.png" alt="Light Mode" />
+    <figcaption>Fig. 1(a) Spring Light Mode</figcaption>
+  </figure>
+  <figure>
+    <img src=".assets/preview-dark.png" alt="Dark Mode" />
+    <figcaption>Fig. 1(b) Spring Dark Mode (SprIngNight)</figcaption>
+  </figure>
+</div>
+```
+
+<div class="img-grid">
+  <figure>
+    <img src=".assets/preview-light.png" alt="Light Mode" />
+    <figcaption>Fig. 1(a) Spring Light Mode</figcaption>
+  </figure>
+  <figure>
+    <img src=".assets/preview-dark.png" alt="Dark Mode" />
+    <figcaption>Fig. 1(b) Spring Dark Mode (SprIngNight)</figcaption>
+  </figure>
+</div>
+
+> **PDF 导出验证提示**：在 Typora 中点击 **文件 → 导出 → PDF**（即使当前处于深色 `Spring Dark` 模式），主题会自动转为清爽白底深字、控制图片不超过页面宽高上限，并尽量避免标题孤立或表格/代码块/公式跨页撕裂。

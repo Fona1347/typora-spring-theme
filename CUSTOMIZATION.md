@@ -40,6 +40,8 @@ python scripts/build.py --check
 - 浅色颜色：`light.css` 的变量。
 - 深色正文：`dark.css` 的 `--body-text-color`（当前 `#c9c5bc`）。
 - 深色图片：`--img-brightness`（当前 `0.9`）；悬停恢复原亮度，打印不调暗。
+- 打印/导出 PDF：`common.css` 中的 `@media print` 强制白底深字、防止标题孤立与图表/公式/代码块跨页撕裂，并通过 `--hy-print-img-max-height`（默认 `22cm`）限制图片最大高度。
+- 科研扩展：`common.css` 内置 `.img-grid` 多图并排、`.booktabs` 三线表，以及注释好的 Calm Mode（`--use-dynamic-effect: 0;`）与 H2–H4 自动编号开关。
 - 专注模式：深色层中 Typora 原生的 `--text-color`、`--blur-text-color`、
   `--select-text-bg-color`、`--select-text-font-color` 必须与主题配色配合。
 

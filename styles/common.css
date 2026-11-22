@@ -5,6 +5,9 @@
     --hy-font-ui: "Roboto", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
     --hy-font-size: 20px;
     --hy-line-height: 1.8rem;
+    --hy-print-img-max-height: 22cm;
+    /* Calm Mode for long academic manuscripts: uncomment to disable motion/hover animations. */
+    /* --use-dynamic-effect: 0; */
     --scrollbar-thumb-hover-bg: var(--scrollbar-thumb-bg);
     --scrollbar-thumb-active-bg: var(--scrollbar-thumb-bg);
 }
@@ -345,5 +348,123 @@ html {
 
     .md-fences:hover {
         animation: bounce-code 0.5s ease-in-out;
+    }
+}
+
+/* Side-by-side experiment figure grid (<div class="img-grid"> or <section class="img-grid">). */
+#write .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    align-items: start;
+    margin: 1.2rem 0;
+}
+
+#write .img-grid > figure,
+#write .img-grid > p {
+    margin: 0;
+    text-align: center;
+}
+
+#write .img-grid img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#write .img-grid figcaption {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    opacity: 0.78;
+    text-align: center;
+}
+
+/* Academic three-line table (Booktabs): wrap a table in <div class="booktabs">...</div>,
+   or replace `#write .booktabs table` with `#write table` below to enable globally. */
+#write .booktabs table {
+    border-collapse: collapse;
+    border-top: 2px solid var(--body-text-color);
+    border-bottom: 2px solid var(--body-text-color);
+    border-left: none;
+    border-right: none;
+}
+
+#write .booktabs table thead th {
+    border-top: none;
+    border-bottom: 1px solid var(--body-text-color);
+    border-left: none;
+    border-right: none;
+    background-color: transparent;
+}
+
+#write .booktabs table tbody td {
+    border: none;
+}
+
+/* Optional H2-H4 automatic section numbering (1. / 1.1 / 1.1.1).
+   Uncomment the block below and run `python scripts/build.py` to enable. */
+/*
+#write { counter-reset: h2-sec; }
+#write h2 { counter-reset: h3-sec; }
+#write h3 { counter-reset: h4-sec; }
+#write h2::before { counter-increment: h2-sec; content: counter(h2-sec) ". "; }
+#write h3::before { counter-increment: h3-sec; content: counter(h2-sec) "." counter(h3-sec) " "; }
+#write h4::before { counter-increment: h4-sec; content: counter(h2-sec) "." counter(h3-sec) "." counter(h4-sec) " "; }
+*/
+
+/* Print / PDF export optimization: clean light canvas, page-break guards, and image sizing. */
+@media print {
+    :root {
+        --content-write-bg-color: #ffffff !important;
+        --body-text-color: #282c34 !important;
+        --text-color: #282c34 !important;
+        --blockquote-bg-color: #f4f8f5 !important;
+        --table-thead-bg-color: #eff5f2 !important;
+        --table-thead-text-color: #06621e !important;
+        --math-html-rawblock-bg-color: #f7f8fa !important;
+    }
+
+    html,
+    body,
+    content,
+    #write,
+    content #write {
+        background: #ffffff !important;
+        color: #282c34 !important;
+        max-width: none !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6 {
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    #write table,
+    #write pre,
+    #write .md-fences,
+    #write blockquote,
+    #write .md-alert,
+    #write .mathjax-block,
+    #write .md-diagram-panel,
+    #write .img-grid,
+    #write figure {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    #write img {
+        filter: none !important;
+        max-width: 100% !important;
+        max-height: var(--hy-print-img-max-height, 22cm) !important;
+        width: auto;
+        height: auto;
+        object-fit: contain;
     }
 }

@@ -85,26 +85,42 @@
   - **搜索高亮清晰可见**：修复加粗、斜体、链接及代码块语法高亮区域被搜索命中时文字对比度不足的问题（`.md-search-hit` / `.md-search-select` / `.cm-searching` / 侧边栏搜索）。
   - **脚注与引用悬浮预览优化**：改为单层实底卡片（`opacity: 1`）与清晰配色，避免半透明叠加导致下方正文透出干扰阅读。
   - **专注模式与选区对齐**：完整接管 Typora 原生 `--text-color`、`--blur-text-color`、`--select-text-bg-color`、`--select-text-font-color`，深浅色下选中文字均清晰可读。
+  - **PDF / 周报导出打印专项优化（`@media print`）**：哪怕在深色主题下导出 PDF 也会自动切回清爽白底深字；为标题、表格、代码块、数学公式、Alert 与 Mermaid 图添加防跨页撕裂规则；内置打印图片尺寸控制（`--hy-print-img-max-height: 22cm`、`max-width: 100%`、`object-fit: contain`），防止超高实验图被裁切。
+  - **科研扩展能力**：支持 `<div class="img-grid">` 实验对比图自动并排与图注、`<div class="booktabs">` 学术三线表（可一键切全局）、可选 H2–H4 章节自动编号，以及一行开启的 **安静长文模式（Calm Mode）**。
   - **排版与组件增强**：`1280px` 舒适阅读宽度、多级嵌套引用层次、五色 GitHub Alert 提示块、优雅滚动条与表格视觉微调。
 
 ---
 
 ## 快速安装与应用
 
-1. 克隆本仓库（默认分支已是 `hy-spring`），或直接在 GitHub 页面下载 ZIP 压缩包：
+### 方式一：AI Agent 一键安装（推荐）
+
+如果你正在使用 Claude Code、Cursor、Codex、Antigravity 等 Agent 工具，直接复制下面这段提示词发给它，即可自动完成下载、备份、安装、字体核查并给你一句简报：
+
+```text
+请帮我自动安装 Typora 的 Spring 科研主题（https://github.com/Fona1347/typora-spring-theme）：
+1. 识别我当前的操作系统并定位 Typora 主题目录（Windows: %APPDATA%\Typora\themes；macOS: ~/Library/Application Support/abnerworks.Typora/themes；Linux: ~/.config/Typora/themes）。
+2. 从该仓库的最新 GitHub Release 下载发布包（若无 Release 则从默认分支 hy-spring 的 dist/ 获取），若目标目录已有同名 spring*.css 请先备份为 .bak，再安装 spring.css（自动）、spring-light.css（浅色）、spring-dark.css（深色）。
+3. 验收：确认 3 个 CSS 文件存在且非空、未破坏其他主题；顺便检查本机是否安装了推荐字体（Roboto、Noto Sans SC 或 霞鹜文楷、Fira Code）。
+4. 完成后只给我一句简洁汇报：包含安装路径、已安装的主题名、是否缺少推荐字体，以及提示我重启 Typora 即可切换。
+```
+
+### 方式二：手动下载安装（Release 压缩包或 Git）
+
+1. **[直接下载最新 Release 压缩包（`v1.0.0`）](https://github.com/Fona1347/typora-spring-theme/releases/latest)**（推荐，内含 3 份独立成品 CSS、`DEMO.md` 与 `LICENSE`，解压即用），或克隆本仓库（默认分支已是 `hy-spring`）：
 
    ```bash
    git clone https://github.com/Fona1347/typora-spring-theme.git
    ```
 
 2. 打开 Typora，点击左上角 **文件 → 偏好设置 → 外观 → 打开主题文件夹**。
-3. 从 `dist/` 目录复制需要使用的主题文件到 Typora 主题文件夹：
-   - `dist/spring.css`：自动跟随系统浅色/暗色模式。
-   - `dist/spring-light.css`：固定浅色 Spring 主题。
-   - `dist/spring-dark.css`：固定暗色 Spring Dark（SprIngNight）主题。
+3. 将 `spring.css`、`spring-light.css`、`spring-dark.css`（位于 Release 压缩包或仓库 `dist/` 目录）复制到 Typora 主题文件夹：
+   - `spring.css`：自动跟随系统浅色/暗色模式。
+   - `spring-light.css`：固定浅色 Spring 主题。
+   - `spring-dark.css`：固定暗色 Spring Dark（SprIngNight）主题。
 
-   > `dist/` 下的三个文件均为独立成品，不依赖额外资源；**无需**复制 `styles/` 或根目录的上游 `spring.css`。
-4. 重启 Typora，在顶部 **主题** 菜单中选择 **Spring**、**Spring Light** 或 **Spring Dark** 即可。
+   > `dist/` 与 Release 中的三个 CSS 均为独立成品，不依赖额外资源；**无需**复制 `styles/` 或根目录的上游 `spring.css`。
+4. 重启 Typora，在顶部 **主题** 菜单中选择 **Spring**、**Spring Light** 或 **Spring Dark**，并可直接打开 [`DEMO.md`](DEMO.md) 一键检验全部排版与交互效果。
 
 ---
 
@@ -118,14 +134,18 @@ python scripts/build.py --check
 node scripts/verify-browser.mjs
 ```
 
-- **开关交互动效**：参考根目录 `spring.css` 顶部的变量注释（如 `--use-dynamic-effect`、`--p-hover-effect`、`--table-hover-effect`），在 `styles/common.css` 的 `:root` 中覆写为 `0`（关闭）或 `1`（开启）后重新构建。
-- **字号、行高与宽度**：调整 `styles/common.css` 中的 `--hy-font-ui`、`--hy-font-size`、`--hy-line-height`、`--hy-editor-max-width`。
+- **安静长文模式（Calm Mode）**：写几万字论文或大量公式时若希望彻底关闭悬停位移动效，取消注释 `styles/common.css` `:root` 中的 `--use-dynamic-effect: 0;` 后重新构建即可。
+- **学术三线表（Booktabs）与章节自动编号**：单张表用 `<div class="booktabs">...</div>` 包裹即可生效；如需全局三线表或开启 H2–H4 自动编号（`1. / 1.1 / 1.1.1`），按 `styles/common.css` 注释取消对应区块并重新构建。
+- **实验对比图并排**：将 2～3 张图片（`<figure>` 或 `<p>`）放入 `<div class="img-grid">...</div>` 即可自动等宽并排居中（示例见 [`DEMO.md`](DEMO.md)）。
+- **字号、行高、宽度与打印图片限高**：调整 `styles/common.css` 中的 `--hy-font-ui`、`--hy-font-size`、`--hy-line-height`、`--hy-editor-max-width`、`--hy-print-img-max-height`。
 - **配色与深色图片亮度**：调整 `styles/light.css` 和 `styles/dark.css` 中的变量（`--img-brightness` 默认 `0.9`）。
 - 完整的构建脚本用法、浏览器检查及上游同步流程见 [个人版维护说明（CUSTOMIZATION.md）](CUSTOMIZATION.md)。
 
 ---
 
 ## 字体推荐与配置
+
+> **懒人首选组合**：只需安装 **Roboto**（英文/数字）+ **Noto Sans SC** 或 **霞鹜文楷**（中文）+ **Fira Code**（代码）三套开源字体，即可直接还原预览图效果。
 
 三款个人主题的正文、标题与界面统一使用本机字体栈（仓库不包含字体文件，也不会联网加载字体）；代码块沿用 `Fira Code → Consolas → … → monospace`：
 

@@ -145,6 +145,7 @@ try {
       equal(actual['warning-code'].color, 'rgb(220, 38, 38)', label + ' warning');
       equal(actual.list['padding-left'], '30px', label + ' list indentation');
       equal(actual.meta['border-left-width'], '0px', label + ' metadata border');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#img-grid')).display`), 'grid', label + ' image grid layout');
       // Check each compositing layer: parent opacity fades even fully opaque children.
       equal(actual.tooltip.opacity, '1', label + ' hover preview opacity');
       equal(actual['tooltip-content'].opacity, '1', label + ' preview text opacity');
@@ -187,6 +188,14 @@ try {
       }
       await load(source, scheme, 'print');
       equal(await evaluate(`getComputedStyle(document.querySelector('#image')).filter`), 'none', label + ' print image');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#image')).maxWidth`), '100%', label + ' print image max-width');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#image')).objectFit`), 'contain', label + ' print image object-fit');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#write')).backgroundColor`), 'rgb(255, 255, 255)', label + ' print white background');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#write')).color`), 'rgb(40, 44, 52)', label + ' print dark text');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#heading')).breakAfter`), 'avoid', label + ' print heading break-after');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#table')).breakInside`), 'avoid', label + ' print table break-inside');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#fence')).breakInside`), 'avoid', label + ' print fence break-inside');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#math-block')).breakInside`), 'avoid', label + ' print math break-inside');
       if (baselineDir) {
         const previous = await readFile(path.join(baselineDir, name), 'utf8');
         await load(previous, scheme);
