@@ -26,7 +26,7 @@
 
 ## Light &amp; Dark Preview
 
-Both screenshots below are rendered directly from the generated [`dist/spring-light.css`](dist/spring-light.css) and [`dist/spring-dark.css`](dist/spring-dark.css) themes.
+Both screenshots below are rendered directly from the generated [`dist/spring-light.css`](dist/spring-light.css) and [`dist/spring-dark.css`](dist/spring-dark.css) themes, showcasing typography, search highlights, IEEE citation hover cards, nested blockquotes, GitHub Alerts, tables, code blocks, task lists, math equations, and Mermaid diagrams.
 
 <table>
   <thead>
