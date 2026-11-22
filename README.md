@@ -1,294 +1,161 @@
-> **Personal fork:** use the `hy-spring` branch. Install the three standalone themes from
-> [`dist/`](dist/), and edit [`styles/`](styles/) for personal changes.
-> The root `spring.css` is the unchanged upstream base.
-> See [customization and upstream sync](CUSTOMIZATION.md).
-
-<img src=".assets/logo-spring.png" alt="logo-spring" />
-
 <p align="center">
-    一款令人如沐春风的 Typora 灵动主题
-    <br/>
-    A refreshing and graceful Typora theme, like a gentle spring breeze.
-    <br>
-    Dynamic Interaction / Custom Configuration
-    <br>
-    动态交互 / 自定义配置
-</p>
-<p align="center">
-  <a>
-    <img src="https://img.shields.io/github/license/SprInec/typora-spring-theme" alt="GitHub license">
-  </a>
-  <a>
-    <img src="https://badgen.net/github/stars/SprInec/typora-spring-theme?color=green&icon=github" alt="GitHub stars">
-  </a>
-  <a>
-    <img src="https://badgen.net/github/commits/SprInec/typora-spring-theme?icon=github" alt="GitHub commits">
-  </a>
-  <a>
-    <img src="https://badgen.net/github/watchers/SprInec/typora-spring-theme?color=purple" alt="GitHub watchers">
-  </a>
-  <a>
-      <img src="https://img.shields.io/badge/language-CSS-purple" />
-  </a>
+  <img src=".assets/logo-spring.png" alt="Spring Theme Logo" width="460" />
 </p>
 
-
+<h1 align="center">Typora Spring Theme · Light &amp; Dark Edition</h1>
 
 <p align="center">
-    <a>English</a>
-    ·
-    <a href="./README_cn.md">简体中文</a>
+  A refreshing, readable Typora theme with full <strong>Light</strong>, <strong>Dark (SprIngNight)</strong>, and <strong>Auto</strong> support.<br/>
+  一款令人如沐春风的 Typora 主题个人维护版：内置<strong>暖白浅色</strong>、<strong>SprIngNight 深色</strong>与<strong>跟随系统自动切换</strong>。
 </p>
 
-## Catalog
-- [Preview](#Preview)
-- [Feature](#Feature)
-- [Custom Configuration](#Custom-Configuration)
-- [Installation](#Installation)
-- [Font recommendations and configuration](#font-recommendations-and-configuration)
-- [Todo List](#Todo-List)
-- [Credits](#Credits)
-- [License](#License)
+<p align="center">
+  <a href="https://github.com/Fona1347/typora-spring-theme/blob/hy-spring/LICENSE"><img src="https://img.shields.io/github/license/Fona1347/typora-spring-theme" alt="License" /></a>
+  <a href="https://github.com/SprInec/typora-spring-theme"><img src="https://img.shields.io/badge/upstream-SprInec%2Ftypora--spring--theme-2f845e" alt="Upstream" /></a>
+  <img src="https://img.shields.io/badge/modes-Light%20%7C%20Dark%20%7C%20Auto-3ea174" alt="Modes" />
+  <img src="https://img.shields.io/badge/language-CSS-purple" alt="CSS" />
+</p>
 
-## Preview
+<p align="center">
+  <strong>English</strong> · <a href="./README_cn.md">简体中文</a> · <a href="./CUSTOMIZATION.md">Maintenance &amp; Sync Guide</a>
+</p>
 
-![preview](.assets/preview.png)
+> **Branch guide:** This fork uses **`hy-spring`** as its default branch. Install the standalone themes directly from [`dist/`](dist/), and edit [`styles/`](styles/) for personal overrides. Root [`spring.css`](spring.css) stays identical to upstream `main` (`SprInec/typora-spring-theme`) for clean upstream syncing.
 
-## Feature
+---
 
-### 1. Spring-themed color palette
+## Light &amp; Dark Preview
 
-![image-20241113191409991](.assets/image-20241113191409991.png)
+Both screenshots below are rendered directly from the generated [`dist/spring-light.css`](dist/spring-light.css) and [`dist/spring-dark.css`](dist/spring-dark.css) themes.
 
-### 2. Flexible interaction with different effects
+<table>
+  <thead>
+    <tr>
+      <th width="50%">Light Mode · <code>dist/spring-light.css</code></th>
+      <th width="50%">Dark Mode (SprIngNight) · <code>dist/spring-dark.css</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href=".assets/preview-light.png"><img src=".assets/preview-light.png" alt="Spring Light Theme Preview" /></a></td>
+      <td><a href=".assets/preview-dark.png"><img src=".assets/preview-dark.png" alt="Spring Dark Theme Preview" /></a></td>
+    </tr>
+  </tbody>
+</table>
 
-- h1
+| Area | Light (`spring-light.css`) | Dark (`spring-dark.css`) |
+| --- | --- | --- |
+| **Canvas &amp; Text** | Warm paper `#fffdf8` · soft ink `#282c34` | Low-glare charcoal `#232222` · warm stone `#c9c5bc` |
+| **Accent Palette** | Forest &amp; spring green (`#06621e`, `#2f845e`, `#3ea174`) | Fresh sprout green (`#91D462`, `#5ea67c`, `#3ea174`) |
+| **Search Highlights** | High-contrast amber `#ffe69a` / current `#ffb454` | High-contrast gold `#e7c76b` / current `#ffad4d` |
+| **Images** | Original brightness | Gentle dimming (`brightness(0.9)`), full brightness on hover &amp; print |
+| **UI &amp; Focus Mode** | Matched selection &amp; native focus-mode variables | Full sidebar, source mode, modal, cursor &amp; focus-mode adaptation |
 
-  <p align="center">
-    <img src=".assets/h1.gif" width="100%" />
-  </p>
+---
 
-- h2
+## What's Enhanced in This Fork
 
-  <p align="center">
-    <img src=".assets/h2.gif" width="80%" />
-  </p>
+- **Three Standalone Themes (`dist/`)**:
+  - `dist/spring.css` — Automatically follows OS light/dark mode (`prefers-color-scheme`).
+  - `dist/spring-light.css` — Always uses the warm-paper light palette.
+  - `dist/spring-dark.css` — Always uses the dark **SprIngNight** palette.
+- **Layered, Upstream-Friendly Architecture**:
+  - Upstream [`spring.css`](spring.css) is never modified directly.
+  - Personal layers live in [`styles/common.css`](styles/common.css), [`styles/light.css`](styles/light.css), and [`styles/dark.css`](styles/dark.css), compiled via zero-dependency `python scripts/build.py`.
+- **Reading &amp; Editing Refinements**:
+  - **Search Highlight Legibility**: `.md-search-hit`, `.md-search-select`, `.cm-searching`, and sidebar matches stay readable over bold, italic, links, and syntax-highlighted code.
+  - **Footnote &amp; Citation Hover Previews**: Single-surface opaque card (`opacity: 1`) with crisp typography so underlying body text never bleeds through.
+  - **Focus Mode &amp; Selection Alignment**: Typora native `--text-color`, `--blur-text-color`, `--select-text-bg-color`, and `--select-text-font-color` are aligned in both themes.
+  - **Typography &amp; Layout**: Comfortable `1280px` reading width, balanced heading hierarchy, refined nested blockquotes, five-color GitHub Alerts, and clean scrollbars.
 
-- h3 h4 h5 h6
-
-  <p align="left">
-    <img src=".assets/hx.gif" width="10%" />
-  </p>
-
-- Paragraph Hover Responsiveness
-
-  <p align="center">
-    <img src=".assets/paragraph_hover.gif" width="100%" />
-  </p>
-
-- Inline styles
-
-  <p align="left">
-    <img src=".assets/inline_en.gif" width="65%" />
-  </p>
-
-- Unordered list
-
-  <p align="left">
-    <img src=".assets/ul.gif" width="50%" />
-  </p>
-
-- Ordered List
-
-  <p align="left">
-    <img src=".assets/ol.gif" width="50%" />
-  </p>
-
-- Image
-
-  <p align="center">
-    <img src=".assets/image.gif" width="100%" />
-  </p>
-
-- Table
-
-  <p align="center">
-    <img src=".assets/table.gif" width="80%" />
-  </p>
-
-- Code block
-
-  <p align="center">
-    <img src=".assets/code_block.gif" width="70%" />
-  </p>
-
-- blockquote
-
-  <p align="center">
-    <img src=".assets/blockquote.gif" width="70%" />
-  </p>
-
-- Alert
-
-  <p align="center">
-    <img src=".assets/alert.gif" width="70%" />
-  </p>
-
-### 3. Typora interface with unified style
-
-<img align="center" src=".assets/sys.gif" style="zoom:50%;" />
-
-## Custom Configuration
-
-### Interaction Effect Configuration
-
-You can customize the interactive effects of any element to be turned on or off as needed. The specific operations are as follows:
-
-1. Read the available interactive variables in the upstream `spring.css`, then add your chosen overrides inside `:root` in `styles/common.css`;
-
-2. Set the corresponding variable to `0` (off) or `1` (on), then run `python scripts/build.py` and reinstall the generated themes from `dist/`;
-
-3. Restart Typora to apply the changes.
-
-> [!important]
->
-> 1. To enable interactive effects, first set `--use-dynamic-effect` to `1`, and then configure it for specific types.
->
-> 2. To turn off all interactive effects, simply set `–use-dynamic-effect` to `0`. (`–use-dynamic-effect` cannot disable some interactive effects of ordered lists. If you want to turn off all interactive effects of ordered lists, set `--list-ol-text-style` to `italic`)
-
-|           Type           |                   Variable Name                   |          Values           |                        Function                         |   Default   |
-| :----------------------: | :-----------------------------------------------: | :-----------------------: | :-----------------------------------------------------: | :---------: |
-| **Global Configuration** |              `--use-dynamic-effect`               |           0 / 1           | Turn off all interactive effect/ Use interactive effect |      1      |
-|            H1            |                `--h1-hover-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|            H2            |                `--h2-after-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|       H3 H4 H5 H6        |               `--h3-6-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
-|        Paragraph         |                `--p-hover-effect`                 |           0 / 1           |                      Close / Open                       |      1      |
-|          Image           |               `--img-hover-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|        Blockquote        |            `--blockquote-hover-effect`            |           0 / 1           |                      Close / Open                       |      1      |
-|          Alert           |              `--alert-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
-|          Strong          |              `--strong-hover-effect`              |           0 / 1           |                      Close / Open                       |      1      |
-|          Italic          |                `--em-hover-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|        Underline         |                `--u-hover-effect`                 |           0 / 1           |                      Close / Open                       |      1      |
-|       Marked text        |               `--mark-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
-|       Deleted text       |               `--del-hover-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|       Inline code        |               `--code-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
-|        Code block        |              `--fence-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
-|           List           | `--list-marker-effect`<br/>`--list-ol-text-style` | 0 / 1<br/>italic / normal |              Close / Open<br>Close / Open               | 1<br>normal |
-|         Divider          |               ` --hr-hover-effect`                |           0 / 1           |                      Close / Open                       |      1      |
-|          Table           |              `--table-hover-effect`               |           0 / 1           |                      Close / Open                       |      1      |
+---
 
 ## Installation
 
-1. Clone the personal branch, or download this branch as a ZIP from GitHub.
+1. Clone this repository (default branch is `hy-spring`) or download the ZIP archive from GitHub:
 
-    ```bash
-    git clone --branch hy-spring https://github.com/Fona1347/typora-spring-theme.git
-    ```
+   ```bash
+   git clone https://github.com/Fona1347/typora-spring-theme.git
+   ```
 
-2. Click ‘Themes’ in the menu of Typora, and click the ‘Open Theme Folder’ button to open it on the ‘Themes’ page.
+2. Open Typora → **Preferences → Appearance → Open Theme Folder**.
+3. Copy the theme file(s) you want from `dist/` into the Typora theme folder:
+   - `dist/spring.css` — Auto (follows system Light/Dark)
+   - `dist/spring-light.css` — Fixed Light
+   - `dist/spring-dark.css` — Fixed Dark (SprIngNight)
 
-3. Copy the theme file you want from `dist/` into the opened Typora theme folder:
-    - `dist/spring.css`: automatically follows the system light/dark mode.
-    - `dist/spring-light.css`: always uses the light Spring theme.
-    - `dist/spring-dark.css`: always uses the dark SpringNight theme.
+   > All files in `dist/` are self-contained. Do **not** copy `styles/` or the root `spring.css` (which is the unmodified upstream base).
+4. Restart Typora and choose **Spring**, **Spring Light**, or **Spring Dark** under **Themes**.
 
-   The generated files are committed and ready to install. To rebuild them after
-   editing `styles/`, run `python scripts/build.py`. Archived font experiments are
-   kept under `legacy/font-variants/` and are not maintained.
+---
 
-4. Restart Typora, and then you can choose **Spring**, **Spring Light**, or **Spring Dark** in the ‘Themes’ list.
+## Customization &amp; Layered Build
 
-## Font recommendations and configuration
+Edit files in [`styles/`](styles/) rather than `dist/`, then rebuild and verify:
 
-All three personal themes use the following stack for body text, headings, and the UI.
-Code retains the base theme's `Fira Code → Consolas → … → monospace` stack. The themes
-reference installed fonts only: this repository bundles no font files and loads no
-remote fonts. The files in `legacy/font-variants/` are historical snapshots; installing
-them is unnecessary to use this configuration.
+```bash
+python scripts/build.py
+python scripts/build.py --check
+node scripts/verify-browser.mjs
+```
+
+- **Toggle interactive effects**: Check the effect flags at the top of root `spring.css` (e.g. `--use-dynamic-effect`, `--p-hover-effect`, `--table-hover-effect`), override them in `styles/common.css` (`0` = off, `1` = on), and rebuild.
+- **Typography &amp; width**: Adjust `--hy-font-ui`, `--hy-font-size`, `--hy-line-height`, and `--hy-editor-max-width` in `styles/common.css`.
+- **Colors &amp; dark image brightness**: Adjust variables in `styles/light.css` and `styles/dark.css` (`--img-brightness` defaults to `0.9`).
+- For full build, verification, and upstream-sync instructions, see [CUSTOMIZATION.md](CUSTOMIZATION.md).
+
+---
+
+## Font Recommendations &amp; Configuration
+
+The maintained themes use a local-only font stack (no bundled font files, no network requests); code blocks continue to use `Fira Code → Consolas → … → monospace`:
 
 ```css
-/* styles/common.css: current body and UI configuration */
+/* styles/common.css */
 :root {
     --hy-font-ui: "Roboto", "PingFang SC", "Microsoft YaHei UI", "Noto Sans SC", sans-serif;
 }
 ```
 
-Fallback happens per character. Latin text and digits prefer Roboto; Chinese text can
-use PingFang on macOS, then Microsoft YaHei UI or Noto Sans SC when PingFang is absent
-on Windows. Use the installed font family name, which can differ from the file name.
-
-| Font | Suggested use | License | Official download or availability |
+| Font | Suggested Role | License | Official Source |
 | --- | --- | --- | --- |
-| Roboto | Latin body text, digits, and UI | Current releases: [OFL 1.1](https://github.com/googlefonts/roboto-3-classic/blob/main/OFL.txt); some older releases: [Apache 2.0](https://github.com/google/roboto/blob/main/LICENSE). Check the downloaded package. | [Google Fonts](https://fonts.google.com/specimen/Roboto) |
-| Noto Sans SC | Simplified Chinese body text; a portable open-source pairing | [OFL 1.1](https://github.com/google/fonts/blob/main/ofl/notosanssc/OFL.txt) | [Google Fonts](https://fonts.google.com/specimen/Noto+Sans+SC) |
-| Fira Code | The base theme's preferred code font | [OFL 1.1](https://github.com/tonsky/FiraCode/blob/master/LICENSE) | [Official releases](https://github.com/tonsky/FiraCode/releases) |
-| Cascadia Code | Code blocks and source mode; used by the historical font variants | [OFL 1.1](https://github.com/microsoft/cascadia-code/blob/main/LICENSE) | [Official releases](https://github.com/microsoft/cascadia-code/releases) |
-| JetBrains Mono | An alternative code font | [OFL 1.1](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt) | [Official website](https://www.jetbrains.com/lp/mono/) |
-| Sarasa Mono SC | Mixed Latin/Chinese code and comments; choose the Mono SC package | [OFL 1.1](https://github.com/be5invis/Sarasa-Gothic/blob/master/LICENSE) | [Official releases](https://github.com/be5invis/Sarasa-Gothic/releases) |
-| Maple Mono CN / NF CN | Monospaced code with Chinese glyphs; NF variants also include icons | OFL 1.1; retain the license files supplied with the chosen release | [Official project and download guide](https://github.com/subframe7536/maple-font#readme) |
-| LXGW WenKai | An optional handwritten-style Chinese reading face | [OFL 1.1](https://github.com/lxgw/LxgwWenKai/blob/master/OFL.txt) | [Official releases](https://github.com/lxgw/LxgwWenKai/releases) |
-| PingFang SC | Chinese system font on macOS | Proprietary; governed by the [Apple software license](https://www.apple.com/legal/sla/docs/macOSTahoe.pdf) | Supplied through macOS; see [Apple's font list](https://support.apple.com/en-us/122869). No Windows font package is provided here. |
-| Microsoft YaHei UI | Chinese system font on Windows | Proprietary; governed by [Windows font licensing](https://learn.microsoft.com/en-us/typography/fonts/font-faq) | Supplied with applicable Windows installations; see [Microsoft's font page](https://learn.microsoft.com/en-us/typography/font-list/microsoft-yahei) |
+| **Roboto** | Latin body, numbers, and UI | [OFL 1.1](https://github.com/googlefonts/roboto-3-classic/blob/main/OFL.txt) | [Google Fonts](https://fonts.google.com/specimen/Roboto) |
+| **Noto Sans SC** | Open-source Simplified Chinese body | [OFL 1.1](https://github.com/google/fonts/blob/main/ofl/notosanssc/OFL.txt) | [Google Fonts](https://fonts.google.com/specimen/Noto+Sans+SC) |
+| **Fira Code** | Default monospace code font | [OFL 1.1](https://github.com/tonsky/FiraCode/blob/master/LICENSE) | [GitHub Releases](https://github.com/tonsky/FiraCode/releases) |
+| **Cascadia Code** | Code blocks &amp; source mode | [OFL 1.1](https://github.com/microsoft/cascadia-code/blob/main/LICENSE) | [GitHub Releases](https://github.com/microsoft/cascadia-code/releases) |
+| **JetBrains Mono** | Alternative monospace code font | [OFL 1.1](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt) | [Official Site](https://www.jetbrains.com/lp/mono/) |
+| **Sarasa Mono SC** | Mixed CJK/Latin code &amp; comments | [OFL 1.1](https://github.com/be5invis/Sarasa-Gothic/blob/master/LICENSE) | [GitHub Releases](https://github.com/be5invis/Sarasa-Gothic/releases) |
+| **Maple Mono CN** | Monospace with Chinese &amp; NF icons | OFL 1.1 | [GitHub Repo](https://github.com/subframe7536/maple-font#readme) |
+| **LXGW WenKai** | Optional calligraphy-style Chinese reading | [OFL 1.1](https://github.com/lxgw/LxgwWenKai/blob/master/OFL.txt) | [GitHub Releases](https://github.com/lxgw/LxgwWenKai/releases) |
+| **PingFang SC** | Built-in macOS Chinese UI font | Apple SLA | Bundled with macOS |
+| **Microsoft YaHei UI** | Built-in Windows Chinese UI font | Windows License | Bundled with Windows |
 
-Extract an official open-source font package, install the desktop `.ttf` / `.otf`
-files you need, and restart Typora. Installing every recommendation is unnecessary;
-choose one body pairing and one code family. System-font usage rights do not grant
-redistribution rights for PingFang or Microsoft YaHei font files. This theme's MIT
-license does not replace any font license. If distributing OFL fonts separately in
-the future, include their copyright and license notices and observe conditions such
-as Reserved Font Names.
+---
 
-To prefer an open-source Chinese font, change the variable in `styles/common.css`:
+<details>
+<summary><strong>Inherited Upstream Dynamic Interactions (GIF Showcase)</strong></summary>
 
-```css
-:root {
-    --hy-font-ui: "Roboto", "Noto Sans SC", sans-serif;
-}
-```
+All original interactive micro-animations from upstream `SprInec/typora-spring-theme` remain available and configurable:
 
-Code typography can be selected independently. For example, add this to
-`styles/common.css`:
-
-```css
-#write code,
-#write pre,
-.md-fences,
-.CodeMirror,
-.CodeMirror pre,
-#typora-source,
-#typora-source .CodeMirror {
-    font-family: "Cascadia Code", "Sarasa Mono SC", Consolas, monospace;
-}
-```
-
-After editing, run `python scripts/build.py` and `python scripts/build.py --check`,
-then copy the generated themes from `dist/` to Typora. See the
-[customization guide](CUSTOMIZATION.md) for the complete workflow.
-
-## Todo List
-
-- [x] Light theme SprIng
-- [x] Smart Interaction
-- [x] Interactive animation configuration
-- [ ] HTML export configuration
-- [ ] Document layout configuration
-- [x] Dark theme SprIngNight
-- [ ] Custom color palette
-- [ ] Custom style
-- [ ] A variety of interactive effects to choose from
-- [ ] [typora-plugin](https://github.com/obgnail/typora_plugin) unified style adaptation
-
-## [Credits](credits.md)
-
-This project is based on *typora-mo-theme* for secondary development of visual and interactive design. The [template](template/) comes from *typora-theme-Jinxiu-template*. 
-
-- [MarMomento/typora-mo-theme](https://github.com/MarMomento/typora-mo-theme)
-- [Sophomoresty/typora-theme-Jinxiu](https://github.com/Sophomoresty/typora-theme-Jinxiu)
-
-## License
-
-This project is based on the MIT open source protocol. You can freely copy, modify and distribute the code of this project, but please keep the original author's [LICENSE](LICENSE).
+- **Headings (`h1` / `h2` / `h3–h6`)**: subtle hover accents and gradient bars
+- **Paragraph &amp; Inline Hover**: responsive highlight feedback on paragraphs, bold, italic, code, and lists
+- **Blocks &amp; Tables**: interactive blockquotes, GitHub Alerts, code blocks, tables, and image zoom
 
 <p align="center">
-    <img src="https://api.star-history.com/svg?repos=SprInec/typora-spring-theme&type=Date"/>
+  <img src=".assets/h1.gif" width="48%" alt="h1 interaction" />
+  <img src=".assets/paragraph_hover.gif" width="48%" alt="paragraph hover" />
 </p>
+<p align="center">
+  <img src=".assets/alert.gif" width="48%" alt="alert blocks" />
+  <img src=".assets/table.gif" width="48%" alt="table hover" />
+</p>
+
+</details>
+
+---
+
+## Credits &amp; License
+
+- Original theme created by **[@SprInec](https://github.com/SprInec)** ([SprInec/typora-spring-theme](https://github.com/SprInec/typora-spring-theme)).
+- Additional acknowledgments in [credits.md](credits.md).
+- Released under the [MIT License](LICENSE).
