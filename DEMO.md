@@ -129,63 +129,93 @@ def list_dist_themes(root: Path) -> list[str]:
 
 ---
 
-## 8. 数学公式 · Mathematics
+## 8. 数学公式与科研推导 · Mathematics & Derivations
 
-行内公式示例：交叉熵损失 $\mathcal{L}(\theta) = -\sum_{i=1}^{N} y_i \log \hat{y}_i$ 与缩放因子 $\sqrt{d_k}$ 可自然融入中英文混排。
+行内公式示例：后验分布 $p_{\theta}(z \mid x)$、L2 正则项 $\lambda \|\theta\|_2^2$、交叉熵损失 $\mathcal{L}(\theta) = -\sum_{i=1}^{N} y_i \log \hat{y}_i$ 与缩放因子 $\sqrt{d_k}$ 可自然融入中英文混排。
 
-块级单行公式（Scaled Dot-Product Attention）：
+### 8.1 Scaled Dot-Product Attention
 
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{Q K^{\top}}{\sqrt{d_k}}\right) V
 $$
 
-多行对齐公式（`aligned`）：
+### 8.2 多行对齐推导（变分下界 ELBO）
 
 $$
 \begin{aligned}
-\nabla_{\theta} \mathcal{L}(\theta) &= \mathbb{E}_{(x, y) \sim \mathcal{D}} \left[ \nabla_{\theta} \ell(f_{\theta}(x), y) \right] \\
-\theta_{t+1} &= \theta_t - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
+\log p_{\theta}(x)
+&= \mathbb{E}_{q_{\phi}(z \mid x)}\!\left[\log \frac{p_{\theta}(x, z)}{q_{\phi}(z \mid x)}\right] + D_{\text{KL}}\!\left(q_{\phi}(z \mid x) \parallel p_{\theta}(z \mid x)\right) \\
+&\ge \mathbb{E}_{q_{\phi}(z \mid x)}\!\left[\log p_{\theta}(x \mid z)\right] - D_{\text{KL}}\!\left(q_{\phi}(z \mid x) \parallel p(z)\right) = \mathcal{L}_{\text{ELBO}}(\theta, \phi; x)
 \end{aligned}
+$$
+
+### 8.3 矩阵特征分解与分段损失函数（`bmatrix` & `cases`）
+
+$$
+\Sigma = Q \begin{bmatrix}
+\lambda_1 & 0 & \cdots & 0 \\
+0 & \lambda_2 & \cdots & 0 \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & 0 & \cdots & \lambda_d
+\end{bmatrix} Q^{\top}
+\qquad , \qquad
+\ell_{\delta}(r) = \begin{cases}
+\frac{1}{2} r^2, & \text{if } |r| \le \delta, \\
+\delta\left(|r| - \frac{1}{2}\delta\right), & \text{otherwise.}
+\end{cases}
+$$
+
+### 8.4 贝叶斯后验与 AdamW 参数更新
+
+$$
+p(\theta \mid \mathcal{D}) = \frac{p(\mathcal{D} \mid \theta)\,p(\theta)}{\int_{\Theta} p(\mathcal{D} \mid \theta')\,p(\theta')\,d\theta'}
+\qquad , \qquad
+\theta_{t+1} = \theta_t - \eta \left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_t\right)
 $$
 
 ---
 
-## 9. Mermaid 图表 · Diagrams
+## 9. 科研高频 Mermaid 图表 · Research Diagrams
 
-### 流程图（Flowchart）
+### 9.1 方法架构与训练流程图（Flowchart）
 
 ```mermaid
 flowchart LR
-    U[upstream/spring.css] --> L[styles/light.css]
-    U --> D[styles/dark.css]
-    C[styles/common.css] --> L
-    C --> D
-    L --> B((scripts/build.py))
-    D --> B
-    B --> O1[dist/spring.css · Auto]
-    B --> O2[dist/spring-light.css · Light]
-    B --> O3[dist/spring-dark.css · Dark]
+    T[Text / Sequence<br/>Token Embedding] --> F[Cross-Modal Attention<br/>Residual + LayerNorm]
+    V[Visual / Graph<br/>Patch / GNN Encoder] --> F
+    F --> H[Task Head<br/>Projection & Pooling]
+    H --> L[Joint Loss Lθ<br/>CE + KL + Reg]
+    H --> E[Evaluation<br/>F1 · AUROC · BLEU]
+    E --> A((Ablation<br/>& Analysis))
+    L -. "AdamW Gradient Update" .-> F
 ```
 
-### 状态图（State Diagram）
+### 9.2 可复现实验与评估闭环（Sequence Diagram）
 
 ```mermaid
-stateDiagram-v2
-    [*] --> AutoMode
-    AutoMode --> LightTheme : prefers-color-scheme light
-    AutoMode --> DarkTheme : prefers-color-scheme dark
-    LightTheme --> DarkTheme : OS sunset switch
-    DarkTheme --> LightTheme : OS sunrise switch
+sequenceDiagram
+    participant P as Planner / Hypothesis
+    participant T as Trainer / Experiment
+    participant E as Benchmark Evaluator
+
+    loop K-Fold / Ablation
+        P->>T: 1. Dispatch config (seed, lr, ablation flags)
+        T->>E: 2. Submit checkpoint & predictions
+        E-->>T: 3. Return metrics (mean ± std, p-value)
+        T-->>P: 4. Log artifacts & update experiment table
+    end
 ```
 
-### 甘特图（Gantt Chart）
+### 9.3 论文实验与顶会投稿甘特图（Gantt Chart）
 
 ```mermaid
 gantt
-    title Spring Personal Theme Workflow
+    title Research Paper & Conference Submission Timeline
     dateFormat YYYY-MM-DD
-    section Maintenance
-    Sync upstream main       :done,    s1, 2026-11-01, 2d
-    Edit styles/ layers      :active,  s2, after s1, 3d
-    Run build.py & verify    :         s3, after s2, 1d
+    section Research Pipeline
+    Literature & Baseline        :done,    s1, 2026-09-01, 18d
+    Method & Architecture        :active,  s2, after s1, 24d
+    Ablation & Significance      :crit,    s3, after s2, 16d
+    Manuscript & Camera-Ready    :         s4, after s3, 18d
+    Submission DDL               :milestone, m1, after s4, 0d
 ```

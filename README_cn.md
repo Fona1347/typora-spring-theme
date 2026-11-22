@@ -5,7 +5,7 @@
 <h1 align="center">Typora Spring Theme · 浅色 / 深色增强版</h1>
 
 <p align="center">
-  一款令人如沐春风的 Typora 灵动主题个人维护版。<br/>
+  面向<strong>科研写作、论文阅读与硕博日常笔记</strong>打磨的 Typora 灵动主题个人维护版。<br/>
   完整支持 <strong>暖白浅色（Light）</strong>、<strong>SprIngNight 深色（Dark）</strong> 与 <strong>跟随系统自动切换（Auto）</strong>。
 </p>
 
@@ -39,6 +39,25 @@
     <tr>
       <td><a href=".assets/preview-light.png"><img src=".assets/preview-light.png" alt="Spring 浅色主题预览" /></a></td>
       <td><a href=".assets/preview-dark.png"><img src=".assets/preview-dark.png" alt="Spring 深色主题预览" /></a></td>
+    </tr>
+  </tbody>
+</table>
+
+### 科研写作专项展示（复杂数学公式 &amp; Mermaid 图表）
+
+专为硕博生与科研党高频写作场景优化：完整呈现多行对齐推导（ELBO 变分下界）、矩阵特征分解（`bmatrix`）、分段损失函数（Huber Loss `cases`）、贝叶斯后验与 AdamW 更新公式，以及三类科研高频 Mermaid 图表（方法框架流程图、可复现实验交互时序图、顶会投稿里程碑甘特图）。
+
+<table>
+  <thead>
+    <tr>
+      <th width="50%">科研浅色 · <code>dist/spring-light.css</code></th>
+      <th width="50%">科研深色（SprIngNight）· <code>dist/spring-dark.css</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href=".assets/preview-research-light.png"><img src=".assets/preview-research-light.png" alt="Spring 科研浅色预览" /></a></td>
+      <td><a href=".assets/preview-research-dark.png"><img src=".assets/preview-research-dark.png" alt="Spring 科研深色预览" /></a></td>
     </tr>
   </tbody>
 </table>

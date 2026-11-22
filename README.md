@@ -5,8 +5,8 @@
 <h1 align="center">Typora Spring Theme · Light &amp; Dark Edition</h1>
 
 <p align="center">
-  A refreshing, readable Typora theme with full <strong>Light</strong>, <strong>Dark (SprIngNight)</strong>, and <strong>Auto</strong> support.<br/>
-  一款令人如沐春风的 Typora 主题个人维护版：内置<strong>暖白浅色</strong>、<strong>SprIngNight 深色</strong>与<strong>跟随系统自动切换</strong>。
+  A refreshing, readable Typora theme built for <strong>academic writing &amp; research notes</strong>, with full <strong>Light</strong>, <strong>Dark (SprIngNight)</strong>, and <strong>Auto</strong> support.<br/>
+  面向<strong>科研写作与硕博日常笔记</strong>打磨的 Typora 主题：内置<strong>暖白浅色</strong>、<strong>SprIngNight 深色</strong>与<strong>跟随系统自动切换</strong>。
 </p>
 
 <p align="center">
@@ -39,6 +39,25 @@ Both screenshots below are rendered directly from the generated [`dist/spring-li
     <tr>
       <td><a href=".assets/preview-light.png"><img src=".assets/preview-light.png" alt="Spring Light Theme Preview" /></a></td>
       <td><a href=".assets/preview-dark.png"><img src=".assets/preview-dark.png" alt="Spring Dark Theme Preview" /></a></td>
+    </tr>
+  </tbody>
+</table>
+
+### Academic &amp; Research Showcase (Math &amp; Mermaid)
+
+Designed for graduate students and researchers: multi-line `aligned` derivations (ELBO), matrices (`bmatrix`), piecewise losses (`cases`), Bayesian posteriors, and research-grade Mermaid diagrams (Method Flowchart, Experiment Sequence Diagram, and Conference Submission Gantt).
+
+<table>
+  <thead>
+    <tr>
+      <th width="50%">Academic Light · <code>dist/spring-light.css</code></th>
+      <th width="50%">Academic Dark · <code>dist/spring-dark.css</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href=".assets/preview-research-light.png"><img src=".assets/preview-research-light.png" alt="Spring Academic Light Preview" /></a></td>
+      <td><a href=".assets/preview-research-dark.png"><img src=".assets/preview-research-dark.png" alt="Spring Academic Dark Preview" /></a></td>
     </tr>
   </tbody>
 </table>
