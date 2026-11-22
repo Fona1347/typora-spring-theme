@@ -20,18 +20,20 @@ content { display: block; }
 <h1 id="heading">Spring · 春日笔记</h1>
 <h2 id="subheading">Theme layers</h2>
 <p id="active" class="md-focus">专注模式选中文本仍应清晰可读。Selected text stays readable.</p>
-<p id="inactive">正文与非焦点段落。<strong id="strong">Bold</strong> <em id="emphasis">Emphasis</em> <a id="link" href="#">Link</a> <code id="inline">code</code> <sup class="md-footnote" id="footnote">1</sup></p>
+<p id="inactive">正文与非焦点段落。<strong id="strong">Bold</strong> <em id="emphasis">Emphasis</em> <a id="link" href="#">Link</a> <code id="inline">code</code> <kbd id="kbd">Ctrl</kbd> <sup class="md-footnote" id="footnote">1</sup></p>
 <p>Search: <span class="md-search-hit" id="search-hit"><strong id="search-hit-child">match</strong></span> <span class="md-search-hit md-search-select" id="search-current"><em id="search-current-child">current</em></span></p>
-<blockquote id="quote"><p>绿色引用块 · Blockquote</p><blockquote id="nested"><p>Nested quote</p><blockquote id="deep"><p>Third level</p></blockquote></blockquote></blockquote>
+<blockquote id="quote"><p>绿色引用块 · Blockquote</p><table id="bq-table"><thead><tr><th id="bq-th">Metric</th></tr></thead><tbody><tr><td id="bq-td">0.92</td></tr></tbody></table><blockquote id="nested"><p>Nested quote</p><blockquote id="deep"><p>Third level</p></blockquote></blockquote></blockquote>
 <blockquote class="md-alert md-alert-caution" id="caution"><span class="md-alert-text">Caution</span><p><code id="caution-code">code</code> 警告提示</p></blockquote>
 <blockquote class="md-alert md-alert-warning" id="warning"><span class="md-alert-text">Warning</span><p><code id="warning-code">code</code> 危险提示</p></blockquote>
-<div class="md-table-fig"><table id="table"><thead><tr><th id="table-head">Header</th></tr></thead><tbody><tr><td id="table-cell">Cell</td></tr></tbody></table></div>
+<div class="md-table-fig" id="table-fig"><table id="table"><thead><tr><th id="table-head">Header</th></tr></thead><tbody><tr id="table-row"><td id="table-cell">Cell</td></tr></tbody></table></div>
+<div class="booktabs" id="booktabs"><table id="bt-table"><thead id="bt-thead"><tr><th id="bt-th">Model</th></tr></thead><tbody><tr><td id="bt-td">Ours</td></tr></tbody></table></div>
 <div class="md-fences cm-s-inner" id="fence"><span class="cm-keyword" id="keyword">const</span> <span class="cm-variable" id="variable">spring</span> = <span class="cm-string" id="string">"hello"</span>; <span class="cm-comment" id="comment">// comment</span> <span class="cm-string cm-searching" id="search-code">code match</span><div class="CodeMirror-cursor" id="cursor"></div></div>
 <ul id="list"><li>List item</li><li class="task-list-item"><input type="checkbox" checked>Task item</li></ul>
 <hr id="rule">
 <img id="image" alt="white test image" width="180" height="55" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='55'%3E%3Crect width='180' height='55' fill='white'/%3E%3C/svg%3E">
 <div class="img-grid" id="img-grid"><figure><img alt="a" width="120" height="40" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40'%3E%3Crect width='120' height='40' fill='white'/%3E%3C/svg%3E"><figcaption>Fig A</figcaption></figure></div>
-<div class="mathjax-block" id="math-block"><div class="md-math-container">E = mc^2</div></div>
+<div class="mathjax-block" id="math-block"><div class="md-math-container" id="math-container">E = mc^2</div></div>
+<div class="md-diagram-panel" id="diagram"><svg width="100" height="40"></svg></div>
 <pre class="md-meta-block" id="meta">title: Spring</pre>
 </div></content>
 <div id="typora-source"><div class="CodeMirror-lines" id="source">Source mode</div></div>

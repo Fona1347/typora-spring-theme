@@ -40,7 +40,7 @@ Install the Typora Spring Academic theme from https://github.com/Fona1347/typora
 
 ### Option B: Manual Install (Release Zip or Git)
 
-1. **[Download the Latest Release (`v1.0.0`)](https://github.com/Fona1347/typora-spring-theme/releases/latest)** (recommended — includes only the 3 ready-to-use CSS files, `DEMO.md`, and `LICENSE`), or clone this repository (default branch is `hy-spring`):
+1. **[Download the Latest Release (`v1.0.1`)](https://github.com/Fona1347/typora-spring-theme/releases/latest)** (recommended — includes only the 3 ready-to-use CSS files, `DEMO.md`, and `LICENSE`), or clone this repository (default branch is `hy-spring`):
 
    ```bash
    git clone https://github.com/Fona1347/typora-spring-theme.git

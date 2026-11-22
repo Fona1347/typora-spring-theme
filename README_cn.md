@@ -40,7 +40,7 @@
 
 ### 方式二：手动下载安装（Release 压缩包或 Git）
 
-1. **[直接下载最新 Release 压缩包（`v1.0.0`）](https://github.com/Fona1347/typora-spring-theme/releases/latest)**（推荐，内含 3 份独立成品 CSS、`DEMO.md` 与 `LICENSE`，解压即用），或克隆本仓库（默认分支已是 `hy-spring`）：
+1. **[直接下载最新 Release 压缩包（`v1.0.1`）](https://github.com/Fona1347/typora-spring-theme/releases/latest)**（推荐，内含 3 份独立成品 CSS、`DEMO.md` 与 `LICENSE`，解压即用），或克隆本仓库（默认分支已是 `hy-spring`）：
 
    ```bash
    git clone https://github.com/Fona1347/typora-spring-theme.git

@@ -146,6 +146,16 @@ try {
       equal(actual.list['padding-left'], '30px', label + ' list indentation');
       equal(actual.meta['border-left-width'], '0px', label + ' metadata border');
       equal(await evaluate(`getComputedStyle(document.querySelector('#img-grid')).display`), 'grid', label + ' image grid layout');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#strong')).display`), 'inline', label + ' strong inline wrapping');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#fence')).fontVariantLigatures`), 'none', label + ' fence no ligatures');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#inline')).fontVariantLigatures`), 'none', label + ' inline code no ligatures');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#bt-thead')).backgroundColor`), 'rgba(0, 0, 0, 0)', label + ' booktabs thead transparent');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#math-container')).overflowX`), 'auto', label + ' wide math overflow-x');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#table-fig')).overflowX`), 'auto', label + ' wide table overflow-x');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#kbd')).borderTopWidth`), '1px', label + ' kbd border');
+      if (!dark) {
+        equal(await evaluate(`getComputedStyle(document.querySelector('#bq-th')).color`), 'rgb(250, 251, 250)', label + ' light blockquote th readable');
+      }
       // Check each compositing layer: parent opacity fades even fully opaque children.
       equal(actual.tooltip.opacity, '1', label + ' hover preview opacity');
       equal(actual['tooltip-content'].opacity, '1', label + ' preview text opacity');
@@ -186,16 +196,26 @@ try {
         await load(source, scheme, 'screen', width);
         equal(await evaluate(`getComputedStyle(document.querySelector('#write')).paddingRight`), padding, `${label} width ${width}`);
       }
-      await load(source, scheme, 'print');
+      await load(source, scheme, 'print', 794);
       equal(await evaluate(`getComputedStyle(document.querySelector('#image')).filter`), 'none', label + ' print image');
       equal(await evaluate(`getComputedStyle(document.querySelector('#image')).maxWidth`), '100%', label + ' print image max-width');
       equal(await evaluate(`getComputedStyle(document.querySelector('#image')).objectFit`), 'contain', label + ' print image object-fit');
       equal(await evaluate(`getComputedStyle(document.querySelector('#write')).backgroundColor`), 'rgb(255, 255, 255)', label + ' print white background');
       equal(await evaluate(`getComputedStyle(document.querySelector('#write')).color`), 'rgb(40, 44, 52)', label + ' print dark text');
+      equal(await evaluate(`getComputedStyle(document.documentElement).fontSize`), '14px', label + ' print font size');
+      equal(await evaluate(`getComputedStyle(document.body).zoom`), '1', label + ' print body zoom');
       equal(await evaluate(`getComputedStyle(document.querySelector('#heading')).breakAfter`), 'avoid', label + ' print heading break-after');
-      equal(await evaluate(`getComputedStyle(document.querySelector('#table')).breakInside`), 'avoid', label + ' print table break-inside');
-      equal(await evaluate(`getComputedStyle(document.querySelector('#fence')).breakInside`), 'avoid', label + ' print fence break-inside');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#table-row')).breakInside`), 'avoid', label + ' print table row break-inside');
       equal(await evaluate(`getComputedStyle(document.querySelector('#math-block')).breakInside`), 'avoid', label + ' print math break-inside');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#diagram')).breakInside`), 'avoid', label + ' print diagram break-inside');
+      // Verify dark-layer leakage is fully prevented in print across tables, fences, YAML, and inline text.
+      equal(await evaluate(`getComputedStyle(document.querySelector('#fence')).backgroundColor`), 'rgb(255, 255, 255)', label + ' print fence light bg');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#bq-td')).backgroundColor`), 'rgb(250, 250, 250)', label + ' print blockquote td light bg');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#meta')).backgroundColor`), 'rgb(234, 243, 236)', label + ' print meta light bg');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#strong')).color`), 'rgb(6, 98, 30)', label + ' print strong dark green');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#bt-table')).boxShadow`), 'none', label + ' print booktabs no shadow');
+      equal(await evaluate(`getComputedStyle(document.querySelector('#bt-table')).borderRadius`), '0px', label + ' print booktabs no radius');
+      equal(await evaluate(`document.querySelector('#rule').getBoundingClientRect().width <= document.querySelector('#write').getBoundingClientRect().width + 1`), true, label + ' print hr no overflow');
       if (baselineDir) {
         const previous = await readFile(path.join(baselineDir, name), 'utf8');
         await load(previous, scheme);

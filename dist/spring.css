@@ -2274,6 +2274,65 @@ html {
     }
 }
 
+/* Academic reading & writing ergonomics (P1/P2 fixes). */
+#write strong {
+    display: inline;
+}
+
+#write code,
+#write pre,
+.md-fences,
+.CodeMirror,
+.CodeMirror pre,
+#typora-source,
+#typora-source .CodeMirror {
+    font-variant-ligatures: none;
+}
+
+#write kbd {
+    display: inline-block;
+    padding: 0.1em 0.45em;
+    font-family: "Fira Code", Consolas, monospace;
+    font-size: 0.82em;
+    line-height: 1.4;
+    color: var(--hy-kbd-color);
+    background-color: var(--hy-kbd-bg);
+    border: 1px solid var(--hy-kbd-border);
+    border-radius: 4px;
+    box-shadow: inset 0 -1px 0 var(--hy-kbd-border);
+    vertical-align: baseline;
+}
+
+/* Prevent horizontal clipping on wide equations, tables, and Mermaid diagrams. */
+.mathjax-block .md-math-container,
+.md-table-fig {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.md-diagram-panel {
+    display: block;
+    margin: 1rem auto;
+    max-width: 100%;
+    overflow-x: auto;
+    text-align: center;
+}
+
+.md-diagram-panel svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Keep list marker proportional to body size to avoid baseline/cursor offset. */
+ul .md-list-item::marker {
+    font-size: 1.15em !important;
+}
+
+/* Ensure Calm Mode (--use-dynamic-effect: 0) also suppresses TOC hover shift. */
+p.md-toc-content:hover {
+    padding-left: calc(10px + 10px * var(--use-dynamic-effect));
+}
+
 /* Side-by-side experiment figure grid (<div class="img-grid"> or <section class="img-grid">). */
 #write .img-grid {
     display: grid;
@@ -2306,10 +2365,17 @@ html {
    or replace `#write .booktabs table` with `#write table` below to enable globally. */
 #write .booktabs table {
     border-collapse: collapse;
+    border-radius: 0;
+    box-shadow: none;
     border-top: 2px solid var(--body-text-color);
     border-bottom: 2px solid var(--body-text-color);
     border-left: none;
     border-right: none;
+}
+
+#write .booktabs table thead {
+    background-color: transparent;
+    color: var(--body-text-color);
 }
 
 #write .booktabs table thead th {
@@ -2318,17 +2384,20 @@ html {
     border-left: none;
     border-right: none;
     background-color: transparent;
+    color: var(--body-text-color);
 }
 
+#write .booktabs table tbody tr,
 #write .booktabs table tbody td {
     border: none;
+    background-color: transparent;
 }
 
 /* Optional H2-H4 automatic section numbering (1. / 1.1 / 1.1.1).
    Uncomment the block below and run `python scripts/build.py` to enable. */
 /*
 #write { counter-reset: h2-sec; }
-#write h2 { counter-reset: h3-sec; }
+#write h2 { counter-reset: h3-sec h4-sec; }
 #write h3 { counter-reset: h4-sec; }
 #write h2::before { counter-increment: h2-sec; content: counter(h2-sec) ". "; }
 #write h3::before { counter-increment: h3-sec; content: counter(h2-sec) "." counter(h3-sec) " "; }
@@ -2347,6 +2416,16 @@ html {
         --math-html-rawblock-bg-color: #f7f8fa !important;
     }
 
+    html {
+        font-size: 14px !important;
+    }
+
+    body {
+        zoom: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
     html,
     body,
     content,
@@ -2356,7 +2435,33 @@ html {
         color: #282c34 !important;
         max-width: none !important;
         padding: 0 !important;
+        overflow: visible !important;
         box-shadow: none !important;
+    }
+
+    #write hr {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #write .booktabs table {
+        border-collapse: collapse !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border-top: 2px solid #282c34 !important;
+        border-bottom: 2px solid #282c34 !important;
+    }
+
+    #write .booktabs table thead,
+    #write .booktabs table thead th {
+        background-color: transparent !important;
+        color: #282c34 !important;
+        border-bottom: 1px solid #282c34 !important;
+    }
+
+    #write .booktabs table tr:nth-child(even),
+    #write .booktabs table tr:nth-child(odd) {
+        background-color: transparent !important;
     }
 
     #write h1,
@@ -2369,10 +2474,11 @@ html {
         page-break-after: avoid;
     }
 
-    #write table,
-    #write pre,
-    #write .md-fences,
-    #write blockquote,
+    #write thead {
+        display: table-header-group;
+    }
+
+    #write tr,
     #write .md-alert,
     #write .mathjax-block,
     #write .md-diagram-panel,
@@ -2418,8 +2524,11 @@ html {
     --blockquote-nested-deeper-border-color: #256a4b;
     --blockquote-hover-border-color: #2f845e;
     --blockquote-thead-bg-color: #3b9457;
-    --blockquote-thead-text-color: #3b3b3b4e;
+    --blockquote-thead-text-color: #fafbfa;
     --blockquote-td-bg-color: #fafafa;
+    --hy-kbd-bg: #f3f6f4;
+    --hy-kbd-border: #c9d8cf;
+    --hy-kbd-color: #282c34;
     --alert-tip-border-color: #1F883D;
     --alert-tip-bg-color: #e8f4eb;
     --alert-tip-hover-border-color: #1F883D;
@@ -2470,13 +2579,13 @@ html {
     --hr-bg-image: linear-gradient(90deg, #5ea67c, #2f845e, #5ea67c);
     --hr-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
     --table-border-color: #e0e0e0;
-    --table-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --blockquote-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-tip-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-caution-td-hover-bg: rgba(251, 239, 224, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-warning-td-hover-bg: rgba(251, 231, 227, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-important-td-hover-bg: rgba(236, 236, 245, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-note-td-hover-bg: rgba(236, 236, 245, calc(0.7 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
+    --table-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --blockquote-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-tip-td-hover-bg: rgba(239, 245, 242, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-caution-td-hover-bg: rgba(251, 239, 224, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-warning-td-hover-bg: rgba(251, 231, 227, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-important-td-hover-bg: rgba(236, 236, 245, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-note-td-hover-bg: rgba(236, 236, 245, calc(0.7 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
     --table-thead-bg-color: #eff5f2;
     --table-thead-text-color: #06621e;
     --table-tbody-border-color: #e8f4ee;
@@ -2594,7 +2703,7 @@ html {
     --source-cm-atom-color: #777777;
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and (prefers-color-scheme: dark) {
     /* Personal dark palette, syntax colors, and Typora interface fixes. */
 
     :root {
@@ -2665,13 +2774,13 @@ html {
         --hr-bg-image: linear-gradient(90deg, #3ea174, #91D462, #3ea174);
         --hr-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
         --table-border-color: #5a5a5a;
-        --table-td-hover-bg: rgba(64, 62, 62, calc(0.75 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --blockquote-td-hover-bg: rgba(47, 132, 94, calc(0.2 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --alert-tip-td-hover-bg: rgba(47, 132, 94, calc(0.28 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --alert-caution-td-hover-bg: rgba(245, 145, 2, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --alert-warning-td-hover-bg: rgba(220, 38, 38, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --alert-important-td-hover-bg: rgba(150, 134, 245, calc(0.24 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-        --alert-note-td-hover-bg: rgba(83, 165, 251, calc(0.22 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
+        --table-td-hover-bg: rgba(64, 62, 62, calc(0.75 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --blockquote-td-hover-bg: rgba(47, 132, 94, calc(0.2 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --alert-tip-td-hover-bg: rgba(47, 132, 94, calc(0.28 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --alert-caution-td-hover-bg: rgba(245, 145, 2, calc(0.18 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --alert-warning-td-hover-bg: rgba(220, 38, 38, calc(0.18 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --alert-important-td-hover-bg: rgba(150, 134, 245, calc(0.24 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+        --alert-note-td-hover-bg: rgba(83, 165, 251, calc(0.22 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
         --table-thead-bg-color: rgba(47, 132, 94, 0.38);
         --table-thead-text-color: #91D462;
         --table-tbody-border-color: #4f4d4d;
@@ -2789,19 +2898,19 @@ html {
         --mermaid-theme: dark;
         --table-row-even-bg-color: #2c2c2b;
         --table-row-odd-bg-color: #232222;
+        --hy-kbd-bg: #323130;
+        --hy-kbd-border: #52514e;
+        --hy-kbd-color: #dcd8cf;
         color-scheme: dark;
     }
 
-    @media screen {
-        #write img {
-            filter: brightness(var(--img-brightness));
-            transition: transform 0.15s ease, border-radius 0.15s ease, filter 0.15s ease;
-        }
+    #write img {
+        filter: brightness(var(--img-brightness));
+        transition: transform 0.15s ease, border-radius 0.15s ease, filter 0.15s ease;
+    }
 
-        #write img:hover {
-            filter: none;
-        }
-
+    #write img:hover {
+        filter: none;
     }
 
     .md-alert.md-alert-caution code {

@@ -63,8 +63,10 @@ def build_themes():
     clean_upstream = "\n".join(line.rstrip() for line in upstream.splitlines()).rstrip()
     base = header + clean_upstream + "\n\n/* Personal shared layer */\n" + parts["common"]
     light = base + "\n\n/* Personal light layer */\n" + parts["light"] + "\n"
-    dark = "\n/* Personal dark layer */\n" + parts["dark"] + "\n"
-    auto_dark = "\n@media (prefers-color-scheme: dark) {\n" + "\n".join(
+    dark = "\n/* Personal dark layer (screen only so PDF/print stays crisp light) */\n@media screen {\n" + "\n".join(
+        "    " + line if line else "" for line in parts["dark"].splitlines()
+    ) + "\n}\n"
+    auto_dark = "\n@media screen and (prefers-color-scheme: dark) {\n" + "\n".join(
         "    " + line if line else "" for line in parts["dark"].splitlines()
     ) + "\n}\n"
     return {

@@ -68,13 +68,13 @@
     --hr-bg-image: linear-gradient(90deg, #3ea174, #91D462, #3ea174);
     --hr-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
     --table-border-color: #5a5a5a;
-    --table-td-hover-bg: rgba(64, 62, 62, calc(0.75 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --blockquote-td-hover-bg: rgba(47, 132, 94, calc(0.2 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-tip-td-hover-bg: rgba(47, 132, 94, calc(0.28 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-caution-td-hover-bg: rgba(245, 145, 2, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-warning-td-hover-bg: rgba(220, 38, 38, calc(0.18 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-important-td-hover-bg: rgba(150, 134, 245, calc(0.24 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
-    --alert-note-td-hover-bg: rgba(83, 165, 251, calc(0.22 * var(--table-hover-effect))) calc(var(--table-hover-effect) * 100%);
+    --table-td-hover-bg: rgba(64, 62, 62, calc(0.75 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --blockquote-td-hover-bg: rgba(47, 132, 94, calc(0.2 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-tip-td-hover-bg: rgba(47, 132, 94, calc(0.28 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-caution-td-hover-bg: rgba(245, 145, 2, calc(0.18 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-warning-td-hover-bg: rgba(220, 38, 38, calc(0.18 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-important-td-hover-bg: rgba(150, 134, 245, calc(0.24 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
+    --alert-note-td-hover-bg: rgba(83, 165, 251, calc(0.22 * var(--table-hover-effect) * var(--use-dynamic-effect))) calc(var(--table-hover-effect) * var(--use-dynamic-effect) * 100%);
     --table-thead-bg-color: rgba(47, 132, 94, 0.38);
     --table-thead-text-color: #91D462;
     --table-tbody-border-color: #4f4d4d;
@@ -192,19 +192,19 @@
     --mermaid-theme: dark;
     --table-row-even-bg-color: #2c2c2b;
     --table-row-odd-bg-color: #232222;
+    --hy-kbd-bg: #323130;
+    --hy-kbd-border: #52514e;
+    --hy-kbd-color: #dcd8cf;
     color-scheme: dark;
 }
 
-@media screen {
-    #write img {
-        filter: brightness(var(--img-brightness));
-        transition: transform 0.15s ease, border-radius 0.15s ease, filter 0.15s ease;
-    }
+#write img {
+    filter: brightness(var(--img-brightness));
+    transition: transform 0.15s ease, border-radius 0.15s ease, filter 0.15s ease;
+}
 
-    #write img:hover {
-        filter: none;
-    }
-
+#write img:hover {
+    filter: none;
 }
 
 .md-alert.md-alert-caution code {
